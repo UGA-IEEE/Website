@@ -1,0 +1,381 @@
+﻿:root {
+  font-family: "Open Sans", sans-serif;
+  line-height: 1.5;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #ffffff;
+  color: #e6e9ef;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.page {
+  min-height: 100vh;
+}
+
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  height: 50px;
+  padding: 0 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(90deg, #151515 0%, #111317 100%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+}
+
+.brandLogo {
+  height: 42px;
+  width: auto;
+  display: block;
+}
+
+.topLinks {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  font-weight: 600;
+}
+
+.topLinks a {
+  color: #fff;
+  opacity: 0.95;
+}
+
+.topLinks a:hover {
+  opacity: 1;
+}
+
+.searchBtn {
+  border: 0;
+  background: transparent;
+  color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+  font-weight: 600;
+}
+
+.hero {
+  padding: 72px 24px 40px;
+  max-width: 980px;
+  margin: 0 auto;
+}
+
+.hero h1 {
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  margin: 0 0 10px;
+}
+
+.hero p {
+  max-width: 680px;
+  opacity: 0.9;
+  margin: 0 0 18px;
+}
+
+.ctaRow {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  display: inline-block;
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.btn.primary {
+  background: #5b7cfa;
+  border-color: #5b7cfa;
+  color: #0b0f17;
+  font-weight: 600;
+}
+
+.healthcareFeature {
+  background: #eeeeee;
+  padding: 45px 24px;
+}
+
+.healthcareInner {
+  max-width: 1320px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(320px, 1fr) minmax(440px, 1.15fr);
+  gap: 36px;
+  align-items: center;
+}
+
+.healthcareCopy {
+  color: #ffffff;
+  max-width: 620px;
+}
+
+.healthcareCopy h2 {
+  background: #ba0c2f;
+  color: #fff;
+  padding: 10px 15px;
+  border-radius: 0;
+  display: inline-block;
+  font-size: 40px;
+}
+
+.healthcareCopy p {
+  margin: 20px 0 0;
+  font-size: 20px;
+  line-height: 1.45;
+  color: #1b1b1b;
+}
+
+.healthcareImages {
+  min-height: 520px;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 10px;
+}
+
+.healthcareImages img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.healthcareMainImg {
+  grid-column: 1;
+  grid-row: 1 / span 2;
+}
+
+.healthcareSideImg {
+  grid-column: 2;
+}
+
+.calendarSection {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 36px 24px;
+  color: #111;
+}
+
+.calendarSection h2 {
+  margin: 0;
+  color: #111;
+}
+
+.calendarGrid {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.calendarHeader {
+  text-align: center;
+  font-weight: 700;
+  color: #222;
+}
+
+.calendarCell {
+  min-height: 72px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  padding: 8px;
+  background: rgba(0, 0, 0, 0.03);
+  color: #222;
+}
+
+.eventDay {
+  border-color: #ba0c2f;
+  background: rgba(186, 12, 47, 0.15);
+  box-shadow: inset 0 0 0 2px #ba0c2f;
+}
+
+.eventList {
+  margin-top: 14px;
+  padding-left: 18px;
+  color: #111;
+}
+
+.section {
+  padding: 36px 24px;
+  max-width: 980px;
+  margin: 0 auto;
+}
+
+.section h2 {
+  margin: 0 0 14px;
+}
+
+.grid {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.card {
+  padding: 16px;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.form {
+  display: grid;
+  gap: 12px;
+  max-width: 520px;
+}
+
+label {
+  display: grid;
+  gap: 6px;
+}
+
+input,
+textarea {
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.05);
+  color: inherit;
+}
+
+.siteFooter {
+  margin-top: 2px;
+  min-height: 20px;
+  padding: 10px 28px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  background: linear-gradient(90deg, #262626 0%, #1f1f1f 100%);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.footerLeft {
+  justify-self: start;
+}
+
+.footerText {
+  margin: 0;
+  justify-self: center;
+  color: #f2e4cf;
+  font-size: 20px;
+  letter-spacing: 0.2px;
+}
+
+.footerSocial {
+  justify-self: center;
+  display: flex;
+  align-items: center;
+}
+
+.socialBtn {
+  width: 54px;
+  height: 54px;
+  display: grid;
+  place-items: center;
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.socialIcon {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  display: block;
+}
+
+@media (max-width: 1100px) {
+  .healthcareInner {
+    grid-template-columns: 1fr;
+  }
+
+  .healthcareCopy {
+    max-width: 100%;
+  }
+
+  .healthcareImages {
+    min-height: 460px;
+  }
+}
+
+@media (max-width: 900px) {
+  .topbar {
+    height: auto;
+    padding: 12px 16px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .topLinks {
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+
+  .brandLogo {
+    height: 36px;
+  }
+
+  .healthcareFeature {
+    padding: 48px 16px;
+  }
+
+  .healthcareEyebrow {
+    font-size: 28px;
+  }
+
+  .healthcareImages {
+    min-height: auto;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(3, minmax(220px, 320px));
+  }
+
+  .healthcareMainImg,
+  .healthcareSideImg {
+    grid-column: auto;
+    grid-row: auto;
+  }
+
+  .calendarSection {
+    padding: 28px 16px;
+  }
+
+  .calendarCell {
+    min-height: 56px;
+    padding: 6px;
+  }
+
+  .siteFooter {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    text-align: center;
+  }
+
+  .footerSocial,
+  .footerLeft {
+    justify-self: center;
+  }
+
+  .footerText {
+    font-size: 22px;
+  }
+}

@@ -300,18 +300,22 @@ a {
   align-items: center;
   justify-content: center;
   gap: 10px;
+  max-width: 100%;
 }
 
 .memberHeading h3 {
   margin: 0;
-  font-size: 1.35rem;
+  max-width: 100%;
+  font-size: clamp(1rem, 0.9vw + 0.8rem, 1.35rem);
   color: #111;
+  white-space: nowrap;
 }
 
 .memberLinkedin {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
   color: #6a6a6a;
   transition: color 160ms ease, transform 160ms ease;
 }

@@ -62,6 +62,11 @@ a {
   opacity: 1;
 }
 
+.topLinks a[aria-current="page"] {
+  opacity: 1;
+  color: #f2e4cf;
+}
+
 .searchBtn {
   border: 0;
   background: transparent;
@@ -216,6 +221,120 @@ a {
   color: #111;
 }
 
+.execBoardSection {
+  padding: 72px 24px 80px;
+  background:
+    radial-gradient(circle at top, rgba(186, 12, 47, 0.08), transparent 35%),
+    linear-gradient(180deg, #f8f8f8 0%, #ffffff 100%);
+  color: #111;
+}
+
+.execBoardPage {
+  min-height: calc(100vh - 72px);
+}
+
+.execBoardIntro {
+  max-width: 760px;
+  margin: 0 auto 44px;
+  text-align: center;
+}
+
+.execBoardEyebrow {
+  display: inline-block;
+  margin: 0 0 16px;
+  padding: 8px 16px;
+  border-radius: 999px;
+  background: #fff;
+  color: #636363;
+  font-size: 0.95rem;
+  font-weight: 600;
+  box-shadow: 0 8px 24px rgba(17, 17, 17, 0.08);
+}
+
+.execBoardIntro h2 {
+  margin: 0;
+  font-size: clamp(2.2rem, 5vw, 3.4rem);
+  line-height: 1.05;
+  color: #111;
+}
+
+.execBoardDescription {
+  max-width: 640px;
+  margin: 16px auto 0;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: #5a5a5a;
+}
+
+.execBoardGrid {
+  max-width: 1160px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 112px 112px;
+}
+
+.memberCard {
+  text-align: center;
+}
+
+.memberPortrait {
+  width: min(600px, 100%);
+  aspect-ratio: 1;
+  margin: 0 auto 22px;
+  overflow: hidden;
+  border-radius: 999px;
+  border: 6px solid #f1f1f1;
+  box-shadow: 0 16px 30px rgba(17, 17, 17, 0.08);
+}
+
+.memberImage {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.memberHeading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.memberHeading h3 {
+  margin: 0;
+  font-size: 1.35rem;
+  color: #111;
+}
+
+.memberLinkedin {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #6a6a6a;
+  transition: color 160ms ease, transform 160ms ease;
+}
+
+.memberLinkedin:hover {
+  color: #0a66c2;
+  transform: translateY(-1px);
+}
+
+.memberLinkedinIcon {
+  width: 22px;
+  height: 22px;
+}
+
+.memberRole {
+  margin: 10px 0 0;
+  font-size: 0.84rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #7a7a7a;
+}
+
 .section {
   padding: 36px 24px;
   max-width: 980px;
@@ -359,6 +478,15 @@ textarea {
     padding: 28px 16px;
   }
 
+  .execBoardSection {
+    padding: 56px 16px 64px;
+  }
+
+  .execBoardGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 63px 40px;
+  }
+
   .calendarCell {
     min-height: 56px;
     padding: 6px;
@@ -377,5 +505,15 @@ textarea {
 
   .footerText {
     font-size: 22px;
+  }
+}
+
+@media (max-width: 640px) {
+  .execBoardGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .memberPortrait {
+    width: 330px;
   }
 }

@@ -83,6 +83,75 @@ const execBoardMembers = [
   },
 ];
 
+const fycMembers = [
+  {
+    name: "Anthony Behrend",
+    image:
+      "src/assets/FYC/Anthony.png",
+    linkedin: "https://www.linkedin.com/in/anthony-behrend/",
+  },
+  {
+    name: "Coco Tang",
+    image:
+      "src/assets/FYC/Coco.png",
+    linkedin: "https://www.linkedin.com/in/coco-tang1/",
+  },
+  {
+    name: "Hieu Nguyen",
+    image:
+      "src/assets/FYC/Hieu.png",
+    linkedin: "https://www.linkedin.com/in/hieu-winn/",
+  },
+  {
+    name: "Jerry Wang",
+    image:
+      "src/assets/FYC/Jerry.png",
+    linkedin: "https://www.linkedin.com/in/jerry-wang07/",
+  },
+  {
+    name: "Mary Magallanes",
+    image:
+      "src/assets/FYC/Mary.png",
+    linkedin: "https://www.linkedin.com/in/mariajose-magallanes/",
+  },
+  {
+    name: "Mia Stagner",
+    image:
+      "src/assets/FYC/Mia.png",
+    linkedin: "https://www.linkedin.com/in/mia-stagner1/",
+  },
+  {
+    name: "Owen Norman",
+    image:
+      "src/assets/FYC/Owen.png",
+    linkedin: "https://www.linkedin.com/in/owennorman/",
+  },
+  {
+    name: "Praneel Surath",
+    image:
+      "src/assets/FYC/Praneel.png",
+    linkedin: "https://www.linkedin.com/in/praneel-s/",
+  },
+  {
+    name: "Saud Kasumbi",
+    image:
+      "src/assets/FYC/Saud.png",
+    linkedin: "https://www.linkedin.com/in/saud-kasumbi/",
+  },
+  {
+    name: "Udaya Maddi",
+    image:
+      "src/assets/FYC/Udaya.png",
+    linkedin: "https://www.linkedin.com/in/udaya-maddi/",
+  },
+  {
+    name: "Zeeshan Ali",
+    image:
+      "src/assets/FYC/Zeeshan.png",
+    linkedin: "https://www.linkedin.com/in/zeeshan-ali-929101261/",
+  },
+];
+
 function LinkedinIcon() {
   return (
     <svg
@@ -99,7 +168,7 @@ function LinkedinIcon() {
   );
 }
 
-function Header({ isExecBoardPage }) {
+function Header({ route }) {
   return (
     <header className="topbar">
       <a href="#/" className="brand" aria-label="UGA IEEE Home">
@@ -107,16 +176,18 @@ function Header({ isExecBoardPage }) {
       </a>
 
       <nav className="topLinks">
-        <a href="#/" aria-current={!isExecBoardPage ? "page" : undefined}>
+        <a href="#/" aria-current={route === "/" ? "page" : undefined}>
           Home
         </a>
         <a
           href="#/exec-board"
-          aria-current={isExecBoardPage ? "page" : undefined}
+          aria-current={route === "/exec-board" ? "page" : undefined}
         >
           Exec Board
         </a>
-        <a href="#/fyc">FYC</a>
+        <a href="#/fyc" aria-current={route === "/fyc" ? "page" : undefined}>
+          FYC
+        </a>
         <a href="#/micromouse">MicroMouse</a>
         <a href="#/gallery">Gallery</a>
         <a
@@ -214,17 +285,17 @@ function HomePage() {
   );
 }
 
-function ExecBoardPage() {
+function MemberDirectoryPage({ eyebrow, title, members, showRoles = true }) {
   return (
     <main className="execBoardPage">
       <section className="execBoardSection" aria-labelledby="exec-board-title">
         <div className="execBoardIntro">
-          <p className="execBoardEyebrow">25' - 26'</p>
-          <h2 id="exec-board-title">Meet Our Excecutive Board</h2>
+          <p className="execBoardEyebrow">{eyebrow}</p>
+          <h2 id="exec-board-title">{title}</h2>
         </div>
 
         <div className="execBoardGrid">
-          {execBoardMembers.map((member) => (
+          {members.map((member) => (
             <article key={member.name} className="memberCard">
               <div className="memberPortrait">
                 <img src={member.image} alt={member.name} className="memberImage" />
@@ -243,7 +314,9 @@ function ExecBoardPage() {
                 </a>
               </div>
 
-              <p className="memberRole">{member.role}</p>
+              {showRoles && member.role ? (
+                <p className="memberRole">{member.role}</p>
+              ) : null}
             </article>
           ))}
         </div>
@@ -267,11 +340,27 @@ export default function App() {
   }, []);
 
   const isExecBoardPage = route === "/exec-board";
+  const isFycPage = route === "/fyc";
 
   return (
     <div className="page">
-      <Header isExecBoardPage={isExecBoardPage} />
-      {isExecBoardPage ? <ExecBoardPage /> : <HomePage />}
+      <Header route={route} />
+      {isExecBoardPage ? (
+        <MemberDirectoryPage
+          eyebrow="25' - 26'"
+          title="Meet Our Executive Board"
+          members={execBoardMembers}
+        />
+      ) : isFycPage ? (
+        <MemberDirectoryPage
+          eyebrow="25' - 26'"
+          title="Meet Our First-Year Council"
+          members={fycMembers}
+          showRoles={false}
+        />
+      ) : (
+        <HomePage />
+      )}
       <Footer />
     </div>
   );

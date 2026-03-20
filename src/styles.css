@@ -279,7 +279,7 @@ a {
 }
 
 .memberPortrait {
-  width: min(600px, 100%);
+  width: min(900px, 100%);
   aspect-ratio: 1;
   margin: 0 auto 22px;
   overflow: hidden;
@@ -514,6 +514,6 @@ textarea {
   }
 
   .memberPortrait {
-    width: 330px;
+    width: 500px;
   }
 }

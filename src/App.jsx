@@ -3,8 +3,25 @@ import "./styles.css";
 import ugaIeeeLogo from "./assets/UGAIEEE_Rectangular_BR.png";
 import instagramLogo from "./assets/Instagram_icon.png";
 import linkedinLogo from "./assets/linkedinLogo.png";
-import micromouseByte from "./assets/MicroMouse/Byte.png";
-import micromouseMaze from "./assets/MicroMouse/unpainted_maze.png";
+import micromouseByte from "./assets_optimized/MicroMouse/Byte.jpg";
+import micromouseMaze from "./assets_optimized/MicroMouse/unpainted_maze.jpg";
+import homeAboutPrimaryPhoto from "./assets_optimized/home/IEEEpumpkin.jpg";
+import homeAboutSecondaryPhotoOne from "./assets_optimized/home/dean-orso-picture.jpg";
+import homeAboutSecondaryPhotoTwo from "./assets_optimized/home/IMG_0461.jpg";
+import micromouseShowcasePoster from "./assets_optimized/Calendar/MicroMouse Showcase.jpg";
+
+const execPhotoFiles = import.meta.glob("./assets_optimized/Exec/*.{jpeg,jpg,png,JPEG,JPG,PNG}", {
+  eager: true,
+  import: "default",
+});
+
+const fycPhotoFiles = import.meta.glob("./assets_optimized/FYC/*.{jpeg,jpg,png,JPEG,JPG,PNG}", {
+  eager: true,
+  import: "default",
+});
+
+const getExecPhoto = (fileName) => execPhotoFiles[`./assets_optimized/Exec/${fileName}`];
+const getFycPhoto = (fileName) => fycPhotoFiles[`./assets_optimized/FYC/${fileName}`];
 
 // Calendar data drives highlighted dates and optional hover previews.
 const today = new Date();
@@ -16,7 +33,7 @@ const monthName = new Intl.DateTimeFormat("en-US", { month: "long" }).format(tod
 const calendarEvents = {
   19: {
     title: "MicroMouse Showcase",
-    image: "src/assets/Calendar/MicroMouse Showcase.png",
+    image: micromouseShowcasePoster,
   },
 };
 
@@ -33,57 +50,49 @@ const execBoardMembers = [
   {
     name: "Jordan Howard",
     role: "President",
-    image:
-      "src/assets/Exec/Portrait Jordan.jpeg",
+    image: getExecPhoto("Portrait Jordan.jpg"),
     linkedin: "https://www.linkedin.com/in/jordan-howard-7ab25616b/",
   },
   {
     name: "Neel Desai",
     role: "Vice President",
-    image:
-      "src/assets/Exec/Landscape Neel.jpeg",
+    image: getExecPhoto("Landscape Neel.jpg"),
     linkedin: "https://www.linkedin.com/in/neel-desai-09a20a21a/",
   },
   {
     name: "Omar Naqib",
     role: "Engineering Director",
-    image:
-      "src/assets/Exec/Landscape Omar.jpeg",
+    image: getExecPhoto("Landscape Omar.jpg"),
     linkedin: "https://www.linkedin.com/in/omarnaqib/",
   },
   {
     name: "Allen Rucker",
     role: "Outreach Director",
-    image:
-      "src/assets/Exec/Landscape Allen.jpeg",
+    image: getExecPhoto("Landscape Allen.jpg"),
     linkedin: "https://www.linkedin.com/in/allen-rucker-a41433248/",
   },
   {
     name: "Sidney Johnson",
     role: "Events Director",
-    image:
-      "src/assets/Exec/JOHNSON_S-PHOTO.jpeg",
+    image: getExecPhoto("JOHNSON_S-PHOTO.jpg"),
     linkedin: "https://www.linkedin.com/in/sidney-johnson4705/",
   },
   {
     name: "Jun Chambers",
     role: "First-Year Advisor",
-    image:
-      "src/assets/Exec/Portrait Jun.jpeg",
+    image: getExecPhoto("Portrait Jun.jpg"),
     linkedin: "https://www.linkedin.com/in/jun-chambers/",
   },
   {
     name: "Joshua Carter",
     role: "First-Year Advisor",
-    image:
-      "src/assets/Exec/Portrait Joshua.jpeg",
+    image: getExecPhoto("Portrait Joshua.jpg"),
     linkedin: "https://www.linkedin.com/in/joshua-carter-904651325/",
   },
   {
     name: "Jason Roode",
     role: "Secretary",
-    image:
-      "src/assets/Exec/Landscape Jason.jpeg",
+    image: getExecPhoto("Landscape Jason.jpg"),
     linkedin: "https://www.linkedin.com/in/jason-roode/",
   },
 ];
@@ -91,68 +100,57 @@ const execBoardMembers = [
 const fycMembers = [
   {
     name: "Anthony Behrend",
-    image:
-      "src/assets/FYC/Anthony.png",
+    image: getFycPhoto("Anthony.png"),
     linkedin: "https://www.linkedin.com/in/anthony-behrend/",
   },
   {
     name: "Coco Tang",
-    image:
-      "src/assets/FYC/Coco.png",
+    image: getFycPhoto("Coco.png"),
     linkedin: "https://www.linkedin.com/in/coco-tang1/",
   },
   {
     name: "Hieu Nguyen",
-    image:
-      "src/assets/FYC/Hieu.png",
+    image: getFycPhoto("Hieu.png"),
     linkedin: "https://www.linkedin.com/in/hieu-winn/",
   },
   {
     name: "Jerry Wang",
-    image:
-      "src/assets/FYC/Jerry.png",
+    image: getFycPhoto("Jerry.png"),
     linkedin: "https://www.linkedin.com/in/jerry-wang07/",
   },
   {
     name: "Mary Magallanes",
-    image:
-      "src/assets/FYC/Mary.png",
+    image: getFycPhoto("Mary.png"),
     linkedin: "https://www.linkedin.com/in/mariajose-magallanes/",
   },
   {
     name: "Mia Stagner",
-    image:
-      "src/assets/FYC/Mia.png",
+    image: getFycPhoto("Mia.png"),
     linkedin: "https://www.linkedin.com/in/mia-stagner1/",
   },
   {
     name: "Owen Norman",
-    image:
-      "src/assets/FYC/Owen.png",
+    image: getFycPhoto("Owen.png"),
     linkedin: "https://www.linkedin.com/in/owennorman/",
   },
   {
     name: "Praneel Surath",
-    image:
-      "src/assets/FYC/Praneel.png",
+    image: getFycPhoto("Praneel.png"),
     linkedin: "https://www.linkedin.com/in/praneel-s/",
   },
   {
     name: "Saud Kasumbi",
-    image:
-      "src/assets/FYC/Saud.png",
+    image: getFycPhoto("Saud.png"),
     linkedin: "https://www.linkedin.com/in/saud-kasumbi/",
   },
   {
     name: "Udaya Maddi",
-    image:
-      "src/assets/FYC/Udaya.png",
+    image: getFycPhoto("Udaya.png"),
     linkedin: "https://www.linkedin.com/in/udaya-maddi/",
   },
   {
     name: "Zeeshan Ali",
-    image:
-      "src/assets/FYC/Zeeshan.png",
+    image: getFycPhoto("Zeeshan.png"),
     linkedin: "https://www.linkedin.com/in/zeeshan-ali-929101261/",
   },
 ];
@@ -170,7 +168,7 @@ const micromouseGalleryImages = [
 
 // Gallery pages load every image in the selected folder automatically.
 const gallery2526Photos = Object.entries(
-  import.meta.glob("./assets/gallery/25_26/*.{png,jpg,jpeg,JPG,JPEG,PNG}", {
+  import.meta.glob("./assets_optimized/gallery/25_26/*.{png,jpg,jpeg,JPG,JPEG,PNG}", {
     eager: true,
     import: "default",
   })
@@ -306,7 +304,7 @@ function HomePage() {
           <div className="homeAboutImageGrid" aria-label="UGA IEEE visuals">
             <img
               className="homeAboutPrimaryImage"
-              src="src/assets/IEEEpumpkin.jpg"
+              src={homeAboutPrimaryPhoto}
               alt="Healthcare robot in hospital"
               loading="eager"
               fetchPriority="high"
@@ -314,14 +312,14 @@ function HomePage() {
             />
             <img
               className="homeAboutSecondaryImage"
-              src="/src/assets/dean-orso-picture.png"
+              src={homeAboutSecondaryPhotoOne}
               alt="Medical device in operating room"
               loading="lazy"
               decoding="async"
             />
             <img
               className="homeAboutSecondaryImage"
-              src="/src/assets/IMG_0461.JPEG"
+              src={homeAboutSecondaryPhotoTwo}
               alt="Scientific visualization"
               loading="lazy"
               decoding="async"

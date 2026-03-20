@@ -49,7 +49,7 @@ a {
 .topLinks {
   display: flex;
   align-items: center;
-  gap: 28px;
+  gap: 18px;
   font-weight: 600;
 }
 
@@ -256,6 +256,7 @@ a {
 }
 
 .calendarCell {
+  position: relative;
   min-height: 72px;
   border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 10px;
@@ -268,6 +269,37 @@ a {
   border-color: #ba0c2f;
   background: rgba(186, 12, 47, 0.15);
   box-shadow: inset 0 0 0 2px #ba0c2f;
+}
+
+.calendarPreview {
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 12px);
+  width: max-content;
+  max-width: min(90vw, 900px);
+  max-height: min(75vh, 900px);
+  overflow: hidden;
+  border-radius: 18px;
+  background: #ffffff;
+  box-shadow: 0 20px 40px rgba(17, 17, 17, 0.22);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(-50%) translateY(8px) scale(0.96);
+  transition: opacity 180ms ease, transform 180ms ease;
+  z-index: 10;
+}
+
+.calendarCell:hover .calendarPreview {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0) scale(1);
+}
+
+.calendarPreviewImage {
+  width: auto;
+  height: auto;
+  max-width: min(90vw, 900px);
+  max-height: min(75vh, 900px);
+  display: block;
 }
 
 .eventList {

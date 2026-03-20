@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import "./styles.css";
 import ugaIeeeLogo from "./assets/UGAIEEE_Rectangular_BR.png";
 import instagramLogo from "./assets/Instagram_icon.png";
+import linkedinLogo from "./assets/linkedinLogo.png";
 import micromouseByte from "./assets/MicroMouse/Byte.png";
 import micromouseMaze from "./assets/MicroMouse/unpainted_maze.png";
 
@@ -12,9 +13,10 @@ const month = today.getMonth();
 const monthName = new Intl.DateTimeFormat("en-US", { month: "long" }).format(today);
 
 const events = {
-  5: "General Body Meeting",
-  12: "Resume Workshop",
-  26: "General Body Meeting",
+  19: {
+    title: "MicroMouse Showcase",
+    image: "src/assets/Calendar/MicroMouse Showcase.png",
+  },
 };
 
 const firstWeekday = new Date(year, month, 1).getDay();
@@ -241,6 +243,15 @@ function Header({ route }) {
         >
           <img src={instagramLogo} alt="Instagram" className="socialIcon" />
         </a>
+        <a
+          href="https://www.linkedin.com/company/uga-ieee/"
+          target="_blank"
+          rel="noreferrer"
+          aria-label="LinkedIn"
+          className="socialBtn"
+        >
+          <img src={linkedinLogo} alt="LinkedIn" className="socialIcon" />
+        </a>
       </nav>
     </header>
   );
@@ -298,19 +309,23 @@ function HomePage() {
           ))}
 
           {cells.map((day, i) => (
-            <div key={i} className={`calendarCell ${day && events[day] ? "eventDay" : ""}`}>
+            <div
+              key={i}
+              className={`calendarCell ${day && events[day] ? "eventDay" : ""}`}
+            >
               {day && <span>{day}</span>}
+              {day && events[day]?.image ? (
+                <div className="calendarPreview" aria-hidden="true">
+                  <img
+                    src={events[day].image}
+                    alt={events[day].title}
+                    className="calendarPreviewImage"
+                  />
+                </div>
+              ) : null}
             </div>
           ))}
         </div>
-
-        <ul className="eventList">
-          {Object.entries(events).map(([day, title]) => (
-            <li key={day}>
-              <strong>{monthName} {day}:</strong> {title}
-            </li>
-          ))}
-        </ul>
       </section>
     </>
   );

@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import "./styles.css";
 import ugaIeeeLogo from "./assets/UGAIEEE_Rectangular_BR.png";
 import instagramLogo from "./assets/Instagram_icon.png";
+import micromouseByte from "./assets/MicroMouse/Byte.png";
+import micromouseMaze from "./assets/MicroMouse/unpainted_maze.png";
 
 const today = new Date();
 const year = today.getFullYear();
@@ -152,6 +154,17 @@ const fycMembers = [
   },
 ];
 
+const micromouseImages = [
+  {
+    src: micromouseByte,
+    alt: "MicroMouse robot Byte",
+  },
+  {
+    src: micromouseMaze,
+    alt: "MicroMouse competition maze",
+  },
+];
+
 function LinkedinIcon() {
   return (
     <svg
@@ -188,7 +201,12 @@ function Header({ route }) {
         <a href="#/fyc" aria-current={route === "/fyc" ? "page" : undefined}>
           FYC
         </a>
-        <a href="#/micromouse">MicroMouse</a>
+        <a
+          href="#/micromouse"
+          aria-current={route === "/micromouse" ? "page" : undefined}
+        >
+          MicroMouse
+        </a>
         <a href="#/gallery">Gallery</a>
         <a
           href="https://instagram.com/uga.ieee"
@@ -209,17 +227,6 @@ function Footer() {
     <footer className="siteFooter">
       <div className="footerLeft" />
       <p className="footerText">&copy; UGA IEEE</p>
-      <div className="footerSocial">
-        <a
-          href="https://instagram.com/uga.ieee"
-          target="_blank"
-          rel="noreferrer"
-          aria-label="Instagram"
-          className="socialBtn"
-        >
-          <img src={instagramLogo} alt="Instagram" className="socialIcon" />
-        </a>
-      </div>
     </footer>
   );
 }
@@ -325,6 +332,32 @@ function MemberDirectoryPage({ eyebrow, title, members, showRoles = true }) {
   );
 }
 
+function BasicIntroPage({ eyebrow, title, images = [] }) {
+  return (
+    <main className="execBoardPage">
+      <section className="micromouseSection" aria-labelledby="micromouse-title">
+        <div className="micromouseIntro">
+          <h2 id="micromouse-title">{title}</h2>
+          <p className="execBoardEyebrow">{eyebrow}</p>
+          {images.length ? (
+            <div className="micromouseGallery" aria-label="MicroMouse images">
+              {images.map((image) => (
+                <figure key={image.src} className="micromouseCard">
+                  <img
+                    src={image.src}
+                    alt={image.alt}
+                    className="micromouseImage"
+                  />
+                </figure>
+              ))}
+            </div>
+          ) : null}
+        </div>
+      </section>
+    </main>
+  );
+}
+
 export default function App() {
   const [route, setRoute] = useState(() =>
     window.location.hash.replace(/^#/, "") || "/"
@@ -341,6 +374,7 @@ export default function App() {
 
   const isExecBoardPage = route === "/exec-board";
   const isFycPage = route === "/fyc";
+  const isMicromousePage = route === "/micromouse";
 
   return (
     <div className="page">
@@ -357,6 +391,12 @@ export default function App() {
           title="Meet Our First-Year Council"
           members={fycMembers}
           showRoles={false}
+        />
+      ) : isMicromousePage ? (
+        <BasicIntroPage
+          eyebrow="The Applied Power Electronics Conference (APEC) displays both the practical and applied aspects of the power electronics business through competitions, technical sessions, exhibits, and seminars."
+          title="IEEE is Headed to APEC 26 This Spring!"
+          images={micromouseImages}
         />
       ) : (
         <HomePage />

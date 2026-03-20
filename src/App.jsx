@@ -165,6 +165,18 @@ const micromouseImages = [
   },
 ];
 
+const gallery2526Images = Object.entries(
+  import.meta.glob("./assets/gallery/25_26/*.{png,jpg,jpeg,JPG,JPEG,PNG}", {
+    eager: true,
+    import: "default",
+  })
+)
+  .sort(([a], [b]) => a.localeCompare(b))
+  .map(([path, src]) => ({
+    src,
+    alt: path.split("/").pop()?.replace(/\.[^.]+$/, "").replace(/[_-]+/g, " ") || "Gallery image",
+  }));
+
 function LinkedinIcon() {
   return (
     <svg
@@ -207,7 +219,19 @@ function Header({ route }) {
         >
           MicroMouse
         </a>
-        <a href="#/gallery">Gallery</a>
+        <div className="navDropdown">
+          <button
+            type="button"
+            className="navDropdownToggle"
+            aria-haspopup="true"
+          >
+            Gallery
+          </button>
+          <div className="navDropdownMenu" aria-label="Gallery years">
+            <a href="#/gallery-24-25">24' - 25'</a>
+            <a href="#/gallery-25-26">25' - 26'</a>
+          </div>
+        </div>
         <a
           href="https://instagram.com/uga.ieee"
           target="_blank"
@@ -358,6 +382,31 @@ function BasicIntroPage({ eyebrow, title, images = [] }) {
   );
 }
 
+function GalleryPage({ eyebrow, title, images, emptyText }) {
+  return (
+    <main className="execBoardPage">
+      <section className="gallerySection" aria-labelledby="gallery-title">
+        <div className="galleryIntro">
+          <p className="execBoardEyebrow">{eyebrow}</p>
+          <h2 id="gallery-title">{title}</h2>
+        </div>
+
+        {images.length ? (
+          <div className="galleryGrid">
+            {images.map((image) => (
+              <figure key={image.src} className="galleryCard">
+                <img src={image.src} alt={image.alt} className="galleryImage" />
+              </figure>
+            ))}
+          </div>
+        ) : (
+          <p className="galleryEmpty">{emptyText}</p>
+        )}
+      </section>
+    </main>
+  );
+}
+
 export default function App() {
   const [route, setRoute] = useState(() =>
     window.location.hash.replace(/^#/, "") || "/"
@@ -375,6 +424,8 @@ export default function App() {
   const isExecBoardPage = route === "/exec-board";
   const isFycPage = route === "/fyc";
   const isMicromousePage = route === "/micromouse";
+  const isGallery2425Page = route === "/gallery-24-25";
+  const isGallery2526Page = route === "/gallery-25-26";
 
   return (
     <div className="page">
@@ -397,6 +448,20 @@ export default function App() {
           eyebrow="The Applied Power Electronics Conference (APEC) displays both the practical and applied aspects of the power electronics business through competitions, technical sessions, exhibits, and seminars."
           title="IEEE is Headed to APEC 26 This Spring!"
           images={micromouseImages}
+        />
+      ) : isGallery2425Page ? (
+        <GalleryPage
+          eyebrow="24' - 25'"
+          title="UGA IEEE Gallery"
+          images={[]}
+          emptyText="Gallery photos for 24' - 25' are coming soon."
+        />
+      ) : isGallery2526Page ? (
+        <GalleryPage
+          eyebrow="25' - 26'"
+          title="UGA IEEE Gallery"
+          images={gallery2526Images}
+          emptyText=""
         />
       ) : (
         <HomePage />

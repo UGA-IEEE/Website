@@ -6,13 +6,14 @@ import linkedinLogo from "./assets/linkedinLogo.png";
 import micromouseByte from "./assets/MicroMouse/Byte.png";
 import micromouseMaze from "./assets/MicroMouse/unpainted_maze.png";
 
+// Calendar data drives highlighted dates and optional hover previews.
 const today = new Date();
 const year = today.getFullYear();
 const month = today.getMonth();
 
 const monthName = new Intl.DateTimeFormat("en-US", { month: "long" }).format(today);
 
-const events = {
+const calendarEvents = {
   19: {
     title: "MicroMouse Showcase",
     image: "src/assets/Calendar/MicroMouse Showcase.png",
@@ -22,7 +23,7 @@ const events = {
 const firstWeekday = new Date(year, month, 1).getDay();
 const daysInMonth = new Date(year, month + 1, 0).getDate();
 
-const cells = Array.from({ length: firstWeekday + daysInMonth }, (_, i) =>
+const calendarCells = Array.from({ length: firstWeekday + daysInMonth }, (_, i) =>
   i < firstWeekday ? null : i - firstWeekday + 1
 );
 
@@ -156,7 +157,7 @@ const fycMembers = [
   },
 ];
 
-const micromouseImages = [
+const micromouseGalleryImages = [
   {
     src: micromouseByte,
     alt: "MicroMouse robot Byte",
@@ -167,7 +168,8 @@ const micromouseImages = [
   },
 ];
 
-const gallery2526Images = Object.entries(
+// Gallery pages load every image in the selected folder automatically.
+const gallery2526Photos = Object.entries(
   import.meta.glob("./assets/gallery/25_26/*.{png,jpg,jpeg,JPG,JPEG,PNG}", {
     eager: true,
     import: "default",
@@ -195,11 +197,19 @@ function LinkedinIcon() {
   );
 }
 
+// Shared site header with lightweight hash-based page navigation.
 function Header({ route }) {
   return (
     <header className="topbar">
       <a href="#/" className="brand" aria-label="UGA IEEE Home">
-        <img src={ugaIeeeLogo} alt="UGA IEEE" className="brandLogo" />
+        <img
+          src={ugaIeeeLogo}
+          alt="UGA IEEE"
+          className="brandLogo"
+          loading="eager"
+          fetchPriority="high"
+          decoding="async"
+        />
       </a>
 
       <nav className="topLinks">
@@ -241,7 +251,13 @@ function Header({ route }) {
           aria-label="Instagram"
           className="socialBtn"
         >
-          <img src={instagramLogo} alt="Instagram" className="socialIcon" />
+          <img
+            src={instagramLogo}
+            alt="Instagram"
+            className="socialIcon"
+            loading="eager"
+            decoding="async"
+          />
         </a>
         <a
           href="https://www.linkedin.com/company/uga-ieee/"
@@ -250,7 +266,13 @@ function Header({ route }) {
           aria-label="LinkedIn"
           className="socialBtn"
         >
-          <img src={linkedinLogo} alt="LinkedIn" className="socialIcon" />
+          <img
+            src={linkedinLogo}
+            alt="LinkedIn"
+            className="socialIcon"
+            loading="eager"
+            decoding="async"
+          />
         </a>
       </nav>
     </header>
@@ -266,40 +288,49 @@ function Footer() {
   );
 }
 
+// Home page intro and club overview.
 function HomePage() {
   return (
     <>
-      <section className="healthcareFeature" id="home" aria-labelledby="healthcare-title">
-        <div className="healthcareInner">
-          <div className="healthcareCopy">
-            <h2 id="healthcare-title">About Us</h2>
+      <section className="homeAboutSection" id="home" aria-labelledby="home-about-title">
+        <div className="homeAboutLayout">
+          <div className="homeAboutCopy">
+            <h2 id="home-about-title">About Us</h2>
             <p>
-              The Institute of Electrical and Electronics Engineers (IEEE) is the world’s largest professional association dedicated to advancing technological innovation and excellence for the benefit of humanity.
+              The Institute of Electrical and Electronics Engineers (IEEE) is the world's largest professional association dedicated to advancing technological innovation and excellence for the benefit of humanity.
               <br />
-              As a student branch, our goal is to uphold the organization’s mission of fostering the knowledge for technological excellence and furthering the professional development of students in the technology field.
+              As a student branch, our goal is to uphold the organization's mission of fostering the knowledge for technological excellence and furthering the professional development of students in the technology field.
             </p>
           </div>
 
-          <div className="healthcareImages" aria-label="Healthcare visuals">
+          <div className="homeAboutImageGrid" aria-label="UGA IEEE visuals">
             <img
-              className="healthcareMainImg"
-              src="src/assets/healthcare-main.jpg"
+              className="homeAboutPrimaryImage"
+              src="src/assets/IEEEpumpkin.jpg"
               alt="Healthcare robot in hospital"
+              loading="eager"
+              fetchPriority="high"
+              decoding="async"
             />
             <img
-              className="healthcareSideImg"
+              className="homeAboutSecondaryImage"
               src="/src/assets/dean-orso-picture.png"
               alt="Medical device in operating room"
+              loading="lazy"
+              decoding="async"
             />
             <img
-              className="healthcareSideImg"
+              className="homeAboutSecondaryImage"
               src="/src/assets/IMG_0461.JPEG"
               alt="Scientific visualization"
+              loading="lazy"
+              decoding="async"
             />
           </div>
         </div>
       </section>
 
+      {/* Monthly calendar with optional hover previews for highlighted dates. */}
       <section className="calendarSection" id="events">
         <h2>{monthName} Upcoming Events</h2>
 
@@ -308,18 +339,20 @@ function HomePage() {
             <div key={d} className="calendarHeader">{d}</div>
           ))}
 
-          {cells.map((day, i) => (
+          {calendarCells.map((day, i) => (
             <div
               key={i}
-              className={`calendarCell ${day && events[day] ? "eventDay" : ""}`}
+              className={`calendarCell ${day && calendarEvents[day] ? "eventDay" : ""}`}
             >
               {day && <span>{day}</span>}
-              {day && events[day]?.image ? (
+              {day && calendarEvents[day]?.image ? (
                 <div className="calendarPreview" aria-hidden="true">
                   <img
-                    src={events[day].image}
-                    alt={events[day].title}
+                    src={calendarEvents[day].image}
+                    alt={calendarEvents[day].title}
                     className="calendarPreviewImage"
+                    loading="lazy"
+                    decoding="async"
                   />
                 </div>
               ) : null}
@@ -331,9 +364,10 @@ function HomePage() {
   );
 }
 
+// Reusable people directory page for executive board and FYC listings.
 function MemberDirectoryPage({ eyebrow, title, members, showRoles = true }) {
   return (
-    <main className="execBoardPage">
+    <main className="contentPage">
       <section className="execBoardSection" aria-labelledby="exec-board-title">
         <div className="execBoardIntro">
           <p className="execBoardEyebrow">{eyebrow}</p>
@@ -344,7 +378,14 @@ function MemberDirectoryPage({ eyebrow, title, members, showRoles = true }) {
           {members.map((member) => (
             <article key={member.name} className="memberCard">
               <div className="memberPortrait">
-                <img src={member.image} alt={member.name} className="memberImage" />
+                <img
+                  src={member.image}
+                  alt={member.name}
+                  className="memberImage"
+                  loading="lazy"
+                  decoding="async"
+                  sizes="(max-width: 640px) 90vw, (max-width: 900px) 45vw, 25vw"
+                />
               </div>
 
               <div className="memberHeading">
@@ -371,9 +412,10 @@ function MemberDirectoryPage({ eyebrow, title, members, showRoles = true }) {
   );
 }
 
-function BasicIntroPage({ eyebrow, title, images = [] }) {
+// Reusable spotlight page with a title, supporting copy, and optional image gallery.
+function SpotlightPage({ eyebrow, title, images = [] }) {
   return (
-    <main className="execBoardPage">
+    <main className="contentPage">
       <section className="micromouseSection" aria-labelledby="micromouse-title">
         <div className="micromouseIntro">
           <h2 id="micromouse-title">{title}</h2>
@@ -386,6 +428,9 @@ function BasicIntroPage({ eyebrow, title, images = [] }) {
                     src={image.src}
                     alt={image.alt}
                     className="micromouseImage"
+                    loading="lazy"
+                    decoding="async"
+                    sizes="(max-width: 900px) 100vw, 50vw"
                   />
                 </figure>
               ))}
@@ -397,9 +442,10 @@ function BasicIntroPage({ eyebrow, title, images = [] }) {
   );
 }
 
+// Gallery page for year-based photo archives.
 function GalleryPage({ eyebrow, title, images, emptyText }) {
   return (
-    <main className="execBoardPage">
+    <main className="contentPage">
       <section className="gallerySection" aria-labelledby="gallery-title">
         <div className="galleryIntro">
           <p className="execBoardEyebrow">{eyebrow}</p>
@@ -410,7 +456,14 @@ function GalleryPage({ eyebrow, title, images, emptyText }) {
           <div className="galleryGrid">
             {images.map((image) => (
               <figure key={image.src} className="galleryCard">
-                <img src={image.src} alt={image.alt} className="galleryImage" />
+                <img
+                  src={image.src}
+                  alt={image.alt}
+                  className="galleryImage"
+                  loading="lazy"
+                  decoding="async"
+                  sizes="(max-width: 640px) 100vw, (max-width: 900px) 50vw, 33vw"
+                />
               </figure>
             ))}
           </div>
@@ -427,6 +480,7 @@ export default function App() {
     window.location.hash.replace(/^#/, "") || "/"
   );
 
+  // Keep the current page in sync with the URL hash.
   useEffect(() => {
     const syncRoute = () => {
       setRoute(window.location.hash.replace(/^#/, "") || "/");
@@ -445,6 +499,7 @@ export default function App() {
   return (
     <div className="page">
       <Header route={route} />
+      {/* Route the single-page app to the selected section page. */}
       {isExecBoardPage ? (
         <MemberDirectoryPage
           eyebrow="25' - 26'"
@@ -459,10 +514,10 @@ export default function App() {
           showRoles={false}
         />
       ) : isMicromousePage ? (
-        <BasicIntroPage
+        <SpotlightPage
           eyebrow="The Applied Power Electronics Conference (APEC) displays both the practical and applied aspects of the power electronics business through competitions, technical sessions, exhibits, and seminars."
           title="IEEE is Headed to APEC 26 This Spring!"
-          images={micromouseImages}
+          images={micromouseGalleryImages}
         />
       ) : isGallery2425Page ? (
         <GalleryPage
@@ -475,7 +530,7 @@ export default function App() {
         <GalleryPage
           eyebrow="25' - 26'"
           title="UGA IEEE Gallery"
-          images={gallery2526Images}
+          images={gallery2526Photos}
           emptyText=""
         />
       ) : (

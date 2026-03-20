@@ -9,19 +9,24 @@ import homeAboutPrimaryPhoto from "./assets_optimized/home/IEEEpumpkin.jpg";
 import homeAboutSecondaryPhotoOne from "./assets_optimized/home/dean-orso-picture.jpg";
 import homeAboutSecondaryPhotoTwo from "./assets_optimized/home/IMG_0461.jpg";
 import micromouseShowcasePoster from "./assets_optimized/Calendar/MicroMouse Showcase.jpg";
+import fycAnthonyPhoto from "./assets_optimized/FYC/Anthony.jpg";
+import fycCocoPhoto from "./assets_optimized/FYC/Coco.jpg";
+import fycHieuPhoto from "./assets_optimized/FYC/Hieu.jpg";
+import fycJerryPhoto from "./assets_optimized/FYC/Jerry.jpg";
+import fycMaryPhoto from "./assets_optimized/FYC/Mary.jpg";
+import fycMiaPhoto from "./assets_optimized/FYC/Mia.jpg";
+import fycOwenPhoto from "./assets_optimized/FYC/Owen.jpg";
+import fycPraneelPhoto from "./assets_optimized/FYC/Praneel.jpg";
+import fycSaudPhoto from "./assets_optimized/FYC/Saud.jpg";
+import fycUdayaPhoto from "./assets_optimized/FYC/Udaya.jpg";
+import fycZeeshanPhoto from "./assets_optimized/FYC/Zeeshan.jpg";
 
 const execPhotoFiles = import.meta.glob("./assets_optimized/Exec/*.{jpeg,jpg,png,JPEG,JPG,PNG}", {
   eager: true,
   import: "default",
 });
 
-const fycPhotoFiles = import.meta.glob("./assets_optimized/FYC/*.{jpeg,jpg,png,JPEG,JPG,PNG}", {
-  eager: true,
-  import: "default",
-});
-
 const getExecPhoto = (fileName) => execPhotoFiles[`./assets_optimized/Exec/${fileName}`];
-const getFycPhoto = (fileName) => fycPhotoFiles[`./assets_optimized/FYC/${fileName}`];
 
 // Calendar data drives highlighted dates and optional hover previews.
 const today = new Date();
@@ -100,57 +105,57 @@ const execBoardMembers = [
 const fycMembers = [
   {
     name: "Anthony Behrend",
-    image: getFycPhoto("Anthony.png"),
+    image: fycAnthonyPhoto,
     linkedin: "https://www.linkedin.com/in/anthony-behrend/",
   },
   {
     name: "Coco Tang",
-    image: getFycPhoto("Coco.png"),
+    image: fycCocoPhoto,
     linkedin: "https://www.linkedin.com/in/coco-tang1/",
   },
   {
     name: "Hieu Nguyen",
-    image: getFycPhoto("Hieu.png"),
+    image: fycHieuPhoto,
     linkedin: "https://www.linkedin.com/in/hieu-winn/",
   },
   {
     name: "Jerry Wang",
-    image: getFycPhoto("Jerry.png"),
+    image: fycJerryPhoto,
     linkedin: "https://www.linkedin.com/in/jerry-wang07/",
   },
   {
     name: "Mary Magallanes",
-    image: getFycPhoto("Mary.png"),
+    image: fycMaryPhoto,
     linkedin: "https://www.linkedin.com/in/mariajose-magallanes/",
   },
   {
     name: "Mia Stagner",
-    image: getFycPhoto("Mia.png"),
+    image: fycMiaPhoto,
     linkedin: "https://www.linkedin.com/in/mia-stagner1/",
   },
   {
     name: "Owen Norman",
-    image: getFycPhoto("Owen.png"),
+    image: fycOwenPhoto,
     linkedin: "https://www.linkedin.com/in/owennorman/",
   },
   {
     name: "Praneel Surath",
-    image: getFycPhoto("Praneel.png"),
+    image: fycPraneelPhoto,
     linkedin: "https://www.linkedin.com/in/praneel-s/",
   },
   {
     name: "Saud Kasumbi",
-    image: getFycPhoto("Saud.png"),
+    image: fycSaudPhoto,
     linkedin: "https://www.linkedin.com/in/saud-kasumbi/",
   },
   {
     name: "Udaya Maddi",
-    image: getFycPhoto("Udaya.png"),
+    image: fycUdayaPhoto,
     linkedin: "https://www.linkedin.com/in/udaya-maddi/",
   },
   {
     name: "Zeeshan Ali",
-    image: getFycPhoto("Zeeshan.png"),
+    image: fycZeeshanPhoto,
     linkedin: "https://www.linkedin.com/in/zeeshan-ali-929101261/",
   },
 ];

@@ -3,11 +3,9 @@ import "./styles.css";
 import ugaIeeeLogo from "./assets/UGAIEEE_Rectangular_BR.png";
 import instagramLogo from "./assets/Instagram_icon.png";
 import linkedinLogo from "./assets/linkedinLogo.png";
+import linktreeLogo from "./assets/linktree.png";
 import micromouseByte from "./assets_optimized/MicroMouse/Byte.jpg";
 import micromouseMaze from "./assets_optimized/MicroMouse/unpainted_maze.jpg";
-import homeAboutPrimaryPhoto from "./assets_optimized/home/IEEEpumpkin.jpg";
-import homeAboutSecondaryPhotoOne from "./assets_optimized/home/dean-orso-picture.jpg";
-import homeAboutSecondaryPhotoTwo from "./assets_optimized/home/IMG_0461.jpg";
 import micromouseShowcasePoster from "./assets_optimized/Calendar/MicroMouse Showcase.jpg";
 import fycAnthonyPhoto from "./assets_optimized/FYC/Anthony.jpg";
 import fycCocoPhoto from "./assets_optimized/FYC/Coco.jpg";
@@ -50,6 +48,24 @@ const calendarCells = Array.from({ length: firstWeekday + daysInMonth }, (_, i) 
 );
 
 const weekdays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+const importantHomeLinks = [
+  {
+    label: "Pay Dues",
+    href: "https://example.com/pay-dues",
+    description: "Pay membership dues for the year.",
+  },
+  {
+    label: "Pickleball Registration",
+    href: "https://forms.office.com/Pages/ResponsePage.aspx?id=HmwhqGNNUkOMO1D6HxR1sQCIXV0M9JBBrRc322k3PzRUQ1hBM0gzMFhOOFpOWlJLS1VBUUgzMFVLQyQlQCN0PWcu",
+    description: "Sign up for our pickleball tournament!.",
+  },
+  {
+    label: "Join the GroupMe",
+    href: "https://groupme.com/join_group/102440624/SQt9qQkr",
+    description: "Get updates, reminders, and community chat.",
+  },
+];
 
 const execBoardMembers = [
   {
@@ -173,7 +189,7 @@ const micromouseGalleryImages = [
 
 // Gallery pages load every image in the selected folder automatically.
 const gallery2526Photos = Object.entries(
-  import.meta.glob("./assets_optimized/gallery/25_26/*.{png,jpg,jpeg,JPG,JPEG,PNG}", {
+  import.meta.glob("./assets_optimized/gallery/25_26/**/*.{png,jpg,jpeg,JPG,JPEG,PNG}", {
     eager: true,
     import: "default",
   })
@@ -181,8 +197,39 @@ const gallery2526Photos = Object.entries(
   .sort(([a], [b]) => a.localeCompare(b))
   .map(([path, src]) => ({
     src,
+    folder:
+      path.split("/").slice(-2, -1)[0]?.replace(/[_-]+/g, " ") || "Gallery",
     alt: path.split("/").pop()?.replace(/\.[^.]+$/, "").replace(/[_-]+/g, " ") || "Gallery image",
   }));
+
+const gallery2526Sections = gallery2526Photos.reduce((sections, image) => {
+  const currentSection = sections[sections.length - 1];
+
+  if (!currentSection || currentSection.folder !== image.folder) {
+    sections.push({
+      folder: image.folder,
+      images: [image],
+    });
+    return sections;
+  }
+
+  currentSection.images.push(image);
+  return sections;
+}, []);
+
+function shuffleItems(items) {
+  const shuffledItems = [...items];
+
+  for (let index = shuffledItems.length - 1; index > 0; index -= 1) {
+    const randomIndex = Math.floor(Math.random() * (index + 1));
+    [shuffledItems[index], shuffledItems[randomIndex]] = [
+      shuffledItems[randomIndex],
+      shuffledItems[index],
+    ];
+  }
+
+  return shuffledItems;
+}
 
 function LinkedinIcon() {
   return (
@@ -233,6 +280,12 @@ function Header({ route }) {
           aria-current={route === "/micromouse" ? "page" : undefined}
         >
           MicroMouse
+        </a>
+        <a
+          href="#/contact"
+          aria-current={route === "/contact" ? "page" : undefined}
+        >
+          Contact
         </a>
         <div className="navDropdown">
           <button
@@ -293,9 +346,41 @@ function Footer() {
 
 // Home page intro and club overview.
 function HomePage() {
+  const [homeBackgroundPhotos] = useState(() => shuffleItems(gallery2526Photos));
+  const [activeHomeBackground, setActiveHomeBackground] = useState(0);
+
+  useEffect(() => {
+    if (homeBackgroundPhotos.length <= 1) {
+      return undefined;
+    }
+
+    const rotationTimer = window.setInterval(() => {
+      setActiveHomeBackground((currentIndex) => (currentIndex + 1) % homeBackgroundPhotos.length);
+    }, 5000);
+
+    return () => window.clearInterval(rotationTimer);
+  }, [homeBackgroundPhotos.length]);
+
   return (
     <>
       <section className="homeAboutSection" id="home" aria-labelledby="home-about-title">
+        <div className="homeAboutBackground" aria-hidden="true">
+          {homeBackgroundPhotos.map((image, index) => (
+            <img
+              key={image.src}
+              className={`homeAboutBackgroundImage ${
+                index === activeHomeBackground ? "isActive" : ""
+              }`}
+              src={image.src}
+              alt=""
+              loading={index === 0 ? "eager" : "lazy"}
+              fetchPriority={index === 0 ? "high" : undefined}
+              decoding="async"
+            />
+          ))}
+          <div className="homeAboutBackgroundOverlay" />
+        </div>
+
         <div className="homeAboutLayout">
           <div className="homeAboutCopy">
             <h2 id="home-about-title">About Us</h2>
@@ -306,30 +391,24 @@ function HomePage() {
             </p>
           </div>
 
-          <div className="homeAboutImageGrid" aria-label="UGA IEEE visuals">
-            <img
-              className="homeAboutPrimaryImage"
-              src={homeAboutPrimaryPhoto}
-              alt="Healthcare robot in hospital"
-              loading="eager"
-              fetchPriority="high"
-              decoding="async"
-            />
-            <img
-              className="homeAboutSecondaryImage"
-              src={homeAboutSecondaryPhotoOne}
-              alt="Medical device in operating room"
-              loading="lazy"
-              decoding="async"
-            />
-            <img
-              className="homeAboutSecondaryImage"
-              src={homeAboutSecondaryPhotoTwo}
-              alt="Scientific visualization"
-              loading="lazy"
-              decoding="async"
-            />
-          </div>
+          <aside className="homeLinksWidget" aria-labelledby="important-links-title">
+            <p className="homeLinksEyebrow">Quick Access</p>
+            <h3 id="important-links-title">Important Links</h3>
+            <div className="homeLinksList">
+              {importantHomeLinks.map((link) => (
+                <a
+                  key={link.label}
+                  className="homeLinkCard"
+                  href={link.href}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <span className="homeLinkLabel">{link.label}</span>
+                  <span className="homeLinkDescription">{link.description}</span>
+                </a>
+              ))}
+            </div>
+          </aside>
         </div>
       </section>
 
@@ -456,23 +535,87 @@ function GalleryPage({ eyebrow, title, images, emptyText }) {
         </div>
 
         {images.length ? (
-          <div className="galleryGrid">
-            {images.map((image) => (
-              <figure key={image.src} className="galleryCard">
-                <img
-                  src={image.src}
-                  alt={image.alt}
-                  className="galleryImage"
-                  loading="lazy"
-                  decoding="async"
-                  sizes="(max-width: 640px) 100vw, (max-width: 900px) 50vw, 33vw"
-                />
-              </figure>
+          <div className="gallerySections">
+            {images.map((section) => (
+              <section
+                key={section.folder}
+                className="galleryGroup"
+                aria-labelledby={`gallery-group-${section.folder}`}
+              >
+                <div className="galleryDivider">
+                  <h3 id={`gallery-group-${section.folder}`} className="galleryDividerLabel">
+                    {section.folder}
+                  </h3>
+                </div>
+
+                <div className="galleryGrid">
+                  {section.images.map((image) => (
+                    <figure key={image.src} className="galleryCard">
+                      <img
+                        src={image.src}
+                        alt={image.alt}
+                        className="galleryImage"
+                        loading="lazy"
+                        decoding="async"
+                        sizes="(max-width: 640px) 100vw, (max-width: 900px) 50vw, 33vw"
+                      />
+                    </figure>
+                  ))}
+                </div>
+              </section>
             ))}
           </div>
         ) : (
           <p className="galleryEmpty">{emptyText}</p>
         )}
+      </section>
+    </main>
+  );
+}
+
+function ContactPage() {
+  return (
+    <main className="contentPage">
+      <section className="contactSection" aria-labelledby="contact-title">
+        <div className="contactIntro">
+          <p className="execBoardEyebrow">Contact</p>
+          <h2 id="contact-title">Contact Us</h2>
+          <p className="contactLead">
+            Fill out this form and we will get back to you as soon as possible.
+          </p>
+        </div>
+
+        <form
+          className="contactForm"
+          action="mailto:ieeeugapr@gmail.com"
+          method="post"
+          encType="text/plain"
+        >
+          <div className="contactFormRow">
+            <label className="contactField">
+              <span className="srOnly">First Name</span>
+              <input type="text" name="firstName" placeholder="First Name*" autoComplete="given-name" />
+            </label>
+            <label className="contactField">
+              <span className="srOnly">Last Name</span>
+              <input type="text" name="lastName" placeholder="Last Name*" autoComplete="family-name" />
+            </label>
+          </div>
+
+          <label className="contactField">
+            <span className="srOnly">Email</span>
+            <input type="email" name="email" placeholder="Email*" autoComplete="email" />
+          </label>
+
+          <label className="contactField">
+            <span className="srOnly">Message</span>
+            <textarea name="message" placeholder="Message" rows="7" />
+          </label>
+
+          <button type="submit" className="contactSubmit">
+            Send Message
+          </button>
+        </form>
       </section>
     </main>
   );
@@ -496,6 +639,7 @@ export default function App() {
   const isExecBoardPage = route === "/exec-board";
   const isFycPage = route === "/fyc";
   const isMicromousePage = route === "/micromouse";
+  const isContactPage = route === "/contact";
   const isGallery2425Page = route === "/gallery-24-25";
   const isGallery2526Page = route === "/gallery-25-26";
 
@@ -522,6 +666,8 @@ export default function App() {
           title="IEEE is Headed to APEC 26 This Spring!"
           images={micromouseGalleryImages}
         />
+      ) : isContactPage ? (
+        <ContactPage />
       ) : isGallery2425Page ? (
         <GalleryPage
           eyebrow="24' - 25'"
@@ -533,7 +679,7 @@ export default function App() {
         <GalleryPage
           eyebrow="25' - 26'"
           title="UGA IEEE Gallery"
-          images={gallery2526Photos}
+          images={gallery2526Sections}
           emptyText=""
         />
       ) : (

@@ -6,18 +6,29 @@ import ContactPage from "./pages/ContactPage";
 import GalleryPage from "./pages/GalleryPage";
 import HomePage from "./pages/HomePage";
 import MemberDirectoryPage from "./pages/MemberDirectoryPage";
+import ProgramsPage from "./pages/ProgramsPage";
 import SpotlightPage from "./pages/SpotlightPage";
+import StaffPage from "./pages/StaffPage";
 import {
   execBoardMembers,
   fycMembers,
   gallery2526Sections,
+  mentorMenteeSections,
   micromouseGalleryImages,
+  programEventSections,
+  programFycSections,
+  programMicromouseSections,
+  programMentorshipSections,
+  programRccSections,
+  technicalTeamSections,
 } from "./data/siteContent";
 
 const DEFAULT_ROUTE = "/";
 
 function getRouteFromHash() {
-  return window.location.hash.replace(/^#/, "") || DEFAULT_ROUTE;
+  const hashValue = window.location.hash.replace(/^#/, "") || DEFAULT_ROUTE;
+  const [route] = hashValue.split("?");
+  return route || DEFAULT_ROUTE;
 }
 
 function renderRoute(route) {
@@ -30,6 +41,28 @@ function renderRoute(route) {
           members={execBoardMembers}
         />
       );
+    case "/staff":
+      return (
+        <StaffPage
+          eyebrow="Meet The People Behind UGA IEEE"
+          title="Staff"
+          execMembers={execBoardMembers}
+          fycMembers={fycMembers}
+          technicalTeamSections={technicalTeamSections}
+          mentorMenteeSections={mentorMenteeSections}
+        />
+      );
+    case "/technical-teams":
+      return <ProgramsPage
+        eyebrow="Programs That Build Community And Experience"
+        title="Programs"
+        eventSections={programEventSections}
+        micromouseSections={programMicromouseSections}
+        micromouseImages={micromouseGalleryImages}
+        fycSections={programFycSections}
+        mentorshipSections={programMentorshipSections}
+        rccSections={programRccSections}
+      />;
     case "/fyc":
       return (
         <MemberDirectoryPage
@@ -37,27 +70,44 @@ function renderRoute(route) {
           title="Meet Our First-Year Council"
           members={fycMembers}
           showRoles={false}
+          centerLastRowOfThree
         />
       );
+    case "/mentors-mentees":
+      return <ProgramsPage
+        eyebrow="Programs That Build Community And Experience"
+        title="Programs"
+        eventSections={programEventSections}
+        micromouseSections={programMicromouseSections}
+        micromouseImages={micromouseGalleryImages}
+        fycSections={programFycSections}
+        mentorshipSections={programMentorshipSections}
+        rccSections={programRccSections}
+      />;
     case "/micromouse":
-      return (
-        <SpotlightPage
-          eyebrow="The Applied Power Electronics Conference (APEC) displays both the practical and applied aspects of the power electronics business through competitions, technical sessions, exhibits, and seminars."
-          title="IEEE is Headed to APEC 26 This Spring!"
-          images={micromouseGalleryImages}
-        />
-      );
+      return <ProgramsPage
+        eyebrow="Programs That Build Community And Experience"
+        title="Programs"
+        eventSections={programEventSections}
+        micromouseSections={programMicromouseSections}
+        micromouseImages={micromouseGalleryImages}
+        fycSections={programFycSections}
+        mentorshipSections={programMentorshipSections}
+        rccSections={programRccSections}
+      />;
+    case "/programs":
+      return <ProgramsPage
+        eyebrow="Programs That Build Community And Experience"
+        title="Programs"
+        eventSections={programEventSections}
+        micromouseSections={programMicromouseSections}
+        micromouseImages={micromouseGalleryImages}
+        fycSections={programFycSections}
+        mentorshipSections={programMentorshipSections}
+        rccSections={programRccSections}
+      />;
     case "/contact":
       return <ContactPage />;
-    case "/gallery-24-25":
-      return (
-        <GalleryPage
-          eyebrow="24' - 25'"
-          title="UGA IEEE Gallery"
-          images={[]}
-          emptyText="Gallery photos for 24' - 25' are coming soon."
-        />
-      );
     case "/gallery-25-26":
       return (
         <GalleryPage

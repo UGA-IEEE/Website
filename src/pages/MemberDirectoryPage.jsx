@@ -5,6 +5,7 @@ export default function MemberDirectoryPage({
   title,
   members,
   showRoles = true,
+  centerLastRowOfThree = false,
 }) {
   return (
     <main className="contentPage">
@@ -14,7 +15,11 @@ export default function MemberDirectoryPage({
           <h2 id="member-directory-title">{title}</h2>
         </div>
 
-        <div className="execBoardGrid">
+        <div
+          className={`execBoardGrid${
+            centerLastRowOfThree ? " execBoardGridCenterLastRowOfThree" : ""
+          }`}
+        >
           {members.map((member) => (
             <article key={member.name} className="memberCard">
               <div className="memberPortrait">

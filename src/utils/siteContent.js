@@ -49,25 +49,38 @@ export function shuffleItems(items) {
   return shuffledItems;
 }
 
-// The home calendar is generated from the current date so collaborators only
-// need to update event content, not the grid math for each new month.
-export function buildCalendarModel({ now, eventsByDay }) {
+// The home calendar grid is derived from the displayed month so collaborators
+// only need to update event content, not the underlying date math.
+export function buildCalendarModel({ now, events = {} }) {
   const year = now.getFullYear();
   const month = now.getMonth();
-  const monthName = new Intl.DateTimeFormat("en-US", { month: "long" }).format(
-    now
-  );
+  const monthLabel = new Intl.DateTimeFormat("en-US", {
+    month: "long",
+    year: "numeric",
+  }).format(now);
   const firstWeekday = new Date(year, month, 1).getDay();
   const daysInMonth = new Date(year, month + 1, 0).getDate();
   const calendarCells = Array.from(
     { length: firstWeekday + daysInMonth },
     (_, index) => (index < firstWeekday ? null : index - firstWeekday + 1)
   );
+  const eventsByDay = Object.fromEntries(
+    Object.entries(events)
+      .filter(([dateKey]) => {
+        const [eventYear, eventMonth] = dateKey.split("-").map(Number);
+        return eventYear === year && eventMonth === month + 1;
+      })
+      .map(([dateKey, event]) => [Number(dateKey.split("-")[2]), event])
+  );
 
   return {
-    monthName,
+    monthLabel,
     weekdays: DEFAULT_WEEKDAYS,
     eventsByDay,
     calendarCells,
   };
+}
+
+export function shiftMonth(date, offset) {
+  return new Date(date.getFullYear(), date.getMonth() + offset, 1);
 }

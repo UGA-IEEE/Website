@@ -67,8 +67,22 @@ a {
   color: #f2e4cf;
 }
 
+.topLinks button[aria-current="page"] {
+  opacity: 1;
+  color: #f2e4cf;
+}
+
 .navDropdown {
   position: relative;
+}
+
+.navDropdown::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: 12px;
 }
 
 .navDropdownToggle {
@@ -123,19 +137,20 @@ a {
 }
 
 /* Home page overview section */
-.homeAboutSection {
+.homeHeroSection {
   position: relative;
   overflow: hidden;
   background: #111111;
-  padding: 45px 24px;
+  min-height: 78vh;
+  padding: 48px 24px;
 }
 
-.homeAboutBackground {
+.homeHeroBackground {
   position: absolute;
   inset: 0;
 }
 
-.homeAboutBackgroundImage {
+.homeHeroBackgroundImage {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -147,80 +162,114 @@ a {
   transition: opacity 1200ms ease;
 }
 
-.homeAboutBackgroundImage.isActive {
+.homeHeroBackgroundImage.isActive {
   opacity: 1;
 }
 
-.homeAboutBackgroundOverlay {
+.homeHeroBackgroundOverlay {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(90deg, rgba(10, 12, 15, 0.32) 0%, rgba(10, 12, 15, 0.24) 38%, rgba(10, 12, 15, 0.2) 62%, rgba(10, 12, 15, 0.34) 100%);
+    linear-gradient(180deg, rgba(9, 11, 16, 0.18) 0%, rgba(9, 11, 16, 0.38) 45%, rgba(9, 11, 16, 0.74) 100%);
 }
 
-.homeAboutLayout {
+.homeHeroContent {
   position: relative;
   z-index: 1;
   max-width: 1320px;
   margin: 0 auto;
-  display: grid;
-  grid-template-columns: minmax(320px, 1.2fr) minmax(280px, 420px);
-  gap: 36px;
-  align-items: center;
-  min-height: 520px;
-}
-
-.homeAboutCopy {
+  min-height: calc(78vh - 96px);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
   color: #ffffff;
-  max-width: 620px;
-  padding: 24px;
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  background: rgba(14, 17, 22, 0.52);
-  backdrop-filter: blur(12px);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.28);
 }
 
-.homeAboutCopy h2 {
-  background: #ba0c2f;
-  color: #fff;
-  padding: 10px 15px;
-  border-radius: 0;
-  display: inline-block;
-  font-size: 40px;
+.homeHeroEyebrow {
+  margin: 0 0 12px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.82);
 }
 
-.homeAboutCopy p {
-  margin: 20px 0 0;
-  font-size: 20px;
-  line-height: 1.45;
+.homeHeroContent h1 {
+  margin: 0;
+  font-size: clamp(3.2rem, 9vw, 6.5rem);
+  line-height: 0.94;
+  letter-spacing: -0.04em;
+}
+
+.homeHeroLead {
+  max-width: 680px;
+  margin: 18px 0 0;
+  font-size: clamp(1.05rem, 1.1rem + 0.4vw, 1.45rem);
+  line-height: 1.55;
   color: rgba(255, 255, 255, 0.94);
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
-.homeLinksWidget {
-  justify-self: end;
-  width: min(100%, 420px);
-  padding: 24px;
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  background: rgba(14, 17, 22, 0.52);
-  backdrop-filter: blur(12px);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.28);
+.homeInfoSection {
+  scroll-margin-top: 88px;
+  padding: 72px 24px;
+  color: #111;
+  background:
+    radial-gradient(circle at top, rgba(186, 12, 47, 0.06), transparent 32%),
+    linear-gradient(180deg, #faf7f3 0%, #ffffff 100%);
 }
 
-.homeLinksEyebrow {
+.homeSectionInner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.homeSectionIntro {
+  max-width: 760px;
+  margin-bottom: 28px;
+}
+
+.homeSectionEyebrow {
   margin: 0;
-  font-size: 12px;
+  font-size: 0.82rem;
   font-weight: 700;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.72);
+  color: #8c2237;
 }
 
-.homeLinksWidget h3 {
-  margin: 10px 0 18px;
-  font-size: 30px;
-  line-height: 1.1;
-  color: #ffffff;
+.homeSectionIntro h2 {
+  margin: 10px 0 0;
+  font-size: clamp(2.2rem, 5vw, 3.6rem);
+  line-height: 1.04;
+  color: #111;
+}
+
+.homeTextPanel {
+  max-width: 760px;
+  padding: 28px 32px;
+  border: 1px solid rgba(17, 17, 17, 0.1);
+  background: #ffffff;
+  box-shadow: 0 20px 46px rgba(17, 17, 17, 0.08);
+}
+
+.homeTextPanel p {
+  margin: 0;
+  font-size: 1.06rem;
+  line-height: 1.8;
+  color: #324255;
+}
+
+.homeTextPanel p + p {
+  margin-top: 16px;
+}
+
+.joinSectionLayout {
+  display: grid;
+  grid-template-columns: minmax(280px, 1fr) minmax(320px, 1fr);
+  gap: 28px;
+  align-items: start;
 }
 
 .homeLinksList {
@@ -244,22 +293,32 @@ a {
   border-color: rgba(255, 255, 255, 0.28);
 }
 
+.homeLinkCardLight {
+  color: #111;
+  border-color: rgba(17, 17, 17, 0.1);
+  background: #ffffff;
+  box-shadow: 0 12px 28px rgba(17, 17, 17, 0.06);
+}
+
+.homeLinkCardLight:hover,
+.homeLinkCardLight:focus-visible {
+  background: #fff3f5;
+  border-color: rgba(186, 12, 47, 0.28);
+}
+
 .homeLinkLabel {
   font-size: 18px;
   font-weight: 700;
-  color: #ffffff;
+  color: inherit;
 }
 
 .homeLinkDescription {
   font-size: 14px;
   line-height: 1.4;
-  color: rgba(255, 255, 255, 0.78);
+  color: rgba(50, 66, 85, 0.82);
 }
 
 .calendarSection {
-  max-width: 980px;
-  margin: 0 auto;
-  padding: 36px 24px;
   color: #111;
 }
 
@@ -268,11 +327,37 @@ a {
   color: #111;
 }
 
+.calendarToolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.calendarNavButton {
+  border: 1px solid rgba(17, 17, 17, 0.16);
+  background: #ffffff;
+  color: #111;
+  padding: 10px 16px;
+  border-radius: 999px;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 180ms ease, color 180ms ease, border-color 180ms ease;
+}
+
+.calendarNavButton:hover,
+.calendarNavButton:focus-visible {
+  background: #ba0c2f;
+  border-color: #ba0c2f;
+  color: #ffffff;
+}
+
 .calendarGrid {
   display: grid;
   grid-template-columns: repeat(7, minmax(0, 1fr));
   gap: 8px;
-  margin-top: 12px;
+  margin-top: 18px;
 }
 
 .calendarHeader {
@@ -326,6 +411,151 @@ a {
   max-width: min(90vw, 900px);
   max-height: min(75vh, 900px);
   display: block;
+}
+
+.programSection {
+  padding: 72px 24px 96px;
+  background:
+    radial-gradient(circle at top, rgba(186, 12, 47, 0.08), transparent 35%),
+    linear-gradient(180deg, #f8f8f8 0%, #ffffff 100%);
+  color: #111;
+}
+
+.programIntro {
+  max-width: 840px;
+  margin: 0 auto 40px;
+  text-align: center;
+}
+
+.programIntroLeft {
+  margin-left: 0;
+  text-align: left;
+}
+
+.programEyebrow {
+  margin: 0 0 16px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #636363;
+}
+
+.programIntro h2 {
+  margin: 0;
+  font-size: clamp(2.2rem, 5vw, 3.6rem);
+  line-height: 1.06;
+  color: #111;
+}
+
+.programLead {
+  max-width: 720px;
+  margin: 18px auto 0;
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: #42526b;
+}
+
+.programGrid {
+  max-width: 1080px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.programCard {
+  display: block;
+  padding: 28px;
+  border: 1px solid rgba(17, 17, 17, 0.08);
+  background: #ffffff;
+  box-shadow: 0 18px 38px rgba(17, 17, 17, 0.08);
+}
+
+.programCard h3 {
+  margin: 0 0 12px;
+  font-size: 1.35rem;
+  color: #111;
+}
+
+.programCard p {
+  margin: 0;
+  line-height: 1.7;
+  color: #42526b;
+}
+
+.programCardWide {
+  grid-column: 1 / -1;
+}
+
+.programLinkCard {
+  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+}
+
+.programLinkCard:hover,
+.programLinkCard:focus-visible {
+  transform: translateY(-2px);
+  border-color: rgba(186, 12, 47, 0.28);
+  box-shadow: 0 22px 44px rgba(17, 17, 17, 0.12);
+}
+
+.staffScrollSection {
+  scroll-margin-top: 88px;
+  padding: 72px 24px 96px;
+  background:
+    radial-gradient(circle at top, rgba(186, 12, 47, 0.06), transparent 34%),
+    linear-gradient(180deg, #faf7f3 0%, #ffffff 100%);
+}
+
+.staffScrollSectionAlt {
+  background:
+    radial-gradient(circle at top, rgba(17, 17, 17, 0.04), transparent 28%),
+    linear-gradient(180deg, #f5f1eb 0%, #ffffff 100%);
+}
+
+.staffSectionInner {
+  max-width: 1160px;
+  margin: 0 auto;
+}
+
+.supportSectionAlt {
+  background:
+    radial-gradient(circle at top, rgba(17, 17, 17, 0.04), transparent 28%),
+    linear-gradient(180deg, #f5f1eb 0%, #ffffff 100%);
+}
+
+.supportCard {
+  max-width: 860px;
+  padding: 32px;
+  border: 1px solid rgba(17, 17, 17, 0.08);
+  background: #ffffff;
+  box-shadow: 0 22px 48px rgba(17, 17, 17, 0.08);
+}
+
+.supportCard p {
+  margin: 0;
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: #324255;
+}
+
+.supportCard p + p {
+  margin-top: 16px;
+}
+
+.supportAction {
+  display: inline-flex;
+  margin-top: 24px;
+  padding: 12px 18px;
+  border-radius: 999px;
+  background: #ba0c2f;
+  color: #ffffff;
+  font-weight: 700;
+  transition: transform 180ms ease, background-color 180ms ease;
+}
+
+.supportAction:hover,
+.supportAction:focus-visible {
+  background: #950a25;
+  transform: translateY(-1px);
 }
 
 /* Shared interior page shell */
@@ -553,6 +783,7 @@ a {
 }
 
 .contactField input,
+.contactField select,
 .contactField textarea {
   width: 100%;
   border-radius: 0;
@@ -568,12 +799,26 @@ a {
   color: #8497ba;
 }
 
+.contactField select {
+  appearance: none;
+  background-image:
+    linear-gradient(45deg, transparent 50%, #12356f 50%),
+    linear-gradient(135deg, #12356f 50%, transparent 50%);
+  background-position:
+    calc(100% - 22px) calc(50% - 3px),
+    calc(100% - 16px) calc(50% - 3px);
+  background-size: 6px 6px, 6px 6px;
+  background-repeat: no-repeat;
+  padding-right: 42px;
+}
+
 .contactField textarea {
   min-height: 180px;
   resize: vertical;
 }
 
 .contactField input:focus,
+.contactField select:focus,
 .contactField textarea:focus {
   outline: 2px solid rgba(18, 53, 111, 0.18);
   outline-offset: 1px;
@@ -615,6 +860,26 @@ a {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 112px 112px;
+}
+
+.execBoardGridCenterLastRowOfThree {
+  grid-template-columns: repeat(8, minmax(0, 1fr));
+}
+
+.execBoardGridCenterLastRowOfThree > .memberCard {
+  grid-column: span 2;
+}
+
+.execBoardGridCenterLastRowOfThree > :nth-last-child(3):nth-child(4n + 1) {
+  grid-column: 2 / span 2;
+}
+
+.execBoardGridCenterLastRowOfThree > :nth-last-child(2):nth-child(4n + 2) {
+  grid-column: 4 / span 2;
+}
+
+.execBoardGridCenterLastRowOfThree > :last-child:nth-child(4n + 3) {
+  grid-column: 6 / span 2;
 }
 
 .memberCard {
@@ -716,16 +981,8 @@ a {
 }
 
 @media (max-width: 1100px) {
-  .homeAboutLayout {
+  .joinSectionLayout {
     grid-template-columns: 1fr;
-  }
-
-  .homeAboutCopy {
-    max-width: 100%;
-  }
-
-  .homeLinksWidget {
-    justify-self: start;
   }
 }
 
@@ -757,11 +1014,11 @@ a {
     height: 36px;
   }
 
-  .homeAboutSection {
+  .homeHeroSection {
     padding: 48px 16px;
   }
 
-  .calendarSection {
+  .homeInfoSection {
     padding: 28px 16px;
   }
 
@@ -781,9 +1038,28 @@ a {
     padding: 56px 16px 72px;
   }
 
+  .programSection {
+    padding: 56px 16px 72px;
+  }
+
+  .staffScrollSection {
+    padding: 56px 16px 72px;
+  }
+
   .execBoardGrid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 63px 40px;
+  }
+
+  .execBoardGridCenterLastRowOfThree {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .execBoardGridCenterLastRowOfThree > .memberCard,
+  .execBoardGridCenterLastRowOfThree > :nth-last-child(3):nth-child(4n + 1),
+  .execBoardGridCenterLastRowOfThree > :nth-last-child(2):nth-child(4n + 2),
+  .execBoardGridCenterLastRowOfThree > :last-child:nth-child(4n + 3) {
+    grid-column: auto;
   }
 
   .micromouseGallery {
@@ -792,6 +1068,10 @@ a {
 
   .galleryGrid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .programGrid {
+    grid-template-columns: 1fr;
   }
 
   .contactForm {
@@ -811,6 +1091,24 @@ a {
     padding: 6px;
   }
 
+  .calendarToolbar {
+    flex-wrap: wrap;
+  }
+
+  .homeHeroContent h1 {
+    font-size: clamp(2.8rem, 13vw, 4.8rem);
+  }
+
+  .homeTextPanel,
+  .supportCard {
+    padding: 24px;
+  }
+
+  .programLead {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
   .siteFooter {
     text-align: center;
   }
@@ -822,6 +1120,10 @@ a {
 
 @media (max-width: 640px) {
   .execBoardGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .execBoardGridCenterLastRowOfThree {
     grid-template-columns: 1fr;
   }
 
@@ -850,5 +1152,9 @@ a {
 
   .memberPortrait {
     width: 500px;
+  }
+
+  .calendarToolbar {
+    justify-content: flex-start;
   }
 }

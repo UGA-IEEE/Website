@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import burnsMcDonnellLogo from "../assets_optimized/branding/BurnsMcDonnell.png";
+import faulhaberLogo from "../assets_optimized/branding/Faulhaber.png";
 import {
   calendarEvents,
   gallery2526Sections,
@@ -92,11 +94,11 @@ export default function HomePage() {
         </div>
 
         <div className="homeHeroContent">
-          <p className="homeHeroEyebrow">University of Georgia Student Branch</p>
+          <p className="homeHeroEyebrow">University of Georgia IEEE Student Branch</p>
           <h1 id="home-hero-title">UGA IEEE</h1>
           <p className="homeHeroLead">
             Building community, creating projects, and opening doors for students
-            interested in electrical engineering and computing.
+            to advance technology for humanity.
           </p>
         </div>
       </section>
@@ -242,13 +244,36 @@ export default function HomePage() {
               accessible for students.
             </p>
             <p>
-              If your organization would like to support UGA IEEE, we&apos;d love to
+              If your organization or company would like to support UGA IEEE, we&apos;d love to
               connect and talk through event partnerships, recruiting engagement,
               or program support.
             </p>
             <a className="supportAction" href="#/contact">
               Contact Us About Sponsorships
             </a>
+            <div className="sponsorThanks" aria-labelledby="current-sponsors-title">
+              <h3 id="current-sponsors-title">Thank You to Our Current Sponsors</h3>
+              <div className="sponsorLogoGrid">
+                <div className="sponsorLogoCard sponsorLogoCardBurns" aria-label="Burns and McDonnell">
+                  <img
+                    className="sponsorLogoImage sponsorLogoImageBurns"
+                    src={burnsMcDonnellLogo}
+                    alt="Burns & McDonnell logo"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+                <div className="sponsorLogoCard sponsorLogoCardFaulhaber" aria-label="Faulhaber">
+                  <img
+                    className="sponsorLogoImage sponsorLogoImageFaulhaber"
+                    src={faulhaberLogo}
+                    alt="Faulhaber logo"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -271,9 +296,33 @@ export default function HomePage() {
             <p>
               We&apos;re grateful for any support.
             </p>
-            <a className="supportAction" href="#/contact">
-              Reach Out About Donating
-            </a>
+          </div>
+          <div className="supportCard">
+            <p>
+              <b>Credit Card:</b>
+            </p>
+            <p>
+              1. Go to: <a href="https://give.uga.edu" target="_blank" rel="noopener noreferrer"><u>give.uga.edu</u></a> and click "Give Now" in top right corner<br />
+              2. Select "College of Engineering" for the college<br />
+              3. Select "Engineering Enhancement Fund" as the designation.<br />
+              4. Under Special Instructions/Comments, specify <b>"Donation For IEEE."</b>
+            </p>
+          </div>
+          <div className="supportCard">
+            <p>
+              <b>Check:</b>
+            </p>
+            <p>
+              Please specify that the payment is going to the Institute of Electrical and Electronics
+              Engineers. Also, make the check payable to UGA Foundation and write “Institute of
+              Electrical and Electronics Engineers” in the memo line. Then, mail it to:<br /><br />
+              Institute of Electrical and Electronics Engineers<br />
+              ATTN: Michaela Collins<br />
+              125 Paul D. Coverdell Center<br />
+              500 D.W. Brooks Drive<br />
+              Athens, GA 30602<br />
+
+            </p>
           </div>
         </div>
       </section>

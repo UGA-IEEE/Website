@@ -59,11 +59,6 @@ export const contactTopics = [
     email: "ieeeugapr@gmail.com",
   },
   {
-    value: "donations",
-    label: "Donations",
-    email: "ieeeugapr@gmail.com",
-  },
-  {
     value: "sponsorships",
     label: "Sponsorships",
     email: "ieeeugapr@gmail.com",

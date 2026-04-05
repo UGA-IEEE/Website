@@ -13,6 +13,7 @@ import fycPraneelPhoto from "../assets_optimized/FYC/Praneel.jpg";
 import fycSaudPhoto from "../assets_optimized/FYC/Saud.jpg";
 import fycUdayaPhoto from "../assets_optimized/FYC/Udaya.jpg";
 import fycZeeshanPhoto from "../assets_optimized/FYC/Zeeshan.jpg";
+import noHeadshot from "../assets_optimized/branding/no-headshot.jpg";
 import {
   buildCalendarModel,
   buildGallerySections,
@@ -198,7 +199,7 @@ export const alumniMembers = [
   {
     name: "Joshua Young",
     year: "2026",
-    image: "",
+    image: noHeadshot,
     currentRole: "N/A",
     ieeeRole: "MicroMouse",
     linkedin: "https://www.linkedin.com/in/josh-young-496355266/",

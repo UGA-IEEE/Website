@@ -17,7 +17,6 @@ function SectionCards({ sections, getCardClassName }) {
 }
 
 export default function ProgramsPage({
-  eyebrow,
   title,
   eventSections,
   micromouseSections,
@@ -57,7 +56,6 @@ export default function ProgramsPage({
       <section className="programSection" id="events" aria-labelledby="program-events-title">
         <div className="staffSectionInner">
           <div className="programIntro programIntroLeft">
-            <p className="programEyebrow">General Body</p>
             <h2 id="program-events-title">Events</h2>
           </div>
           <SectionCards sections={eventSections} />
@@ -67,8 +65,7 @@ export default function ProgramsPage({
       <section className="staffScrollSection staffScrollSectionAlt" id="micromouse" aria-labelledby="program-micromouse-title">
         <div className="staffSectionInner">
           <div className="programIntro programIntroLeft">
-            <p className="programEyebrow">APEC</p>
-            <h2 id="program-micromouse-title">Micromouse</h2>
+            <h2 id="program-micromouse-title">MicroMouse</h2>
           </div>
           <SectionCards sections={micromouseSections} />
           {micromouseImages.length ? (
@@ -93,7 +90,6 @@ export default function ProgramsPage({
       <section className="staffScrollSection" id="fyc-programs" aria-labelledby="program-fyc-title">
         <div className="staffSectionInner">
           <div className="programIntro programIntroLeft">
-            <p className="programEyebrow">Early Involvement</p>
             <h2 id="program-fyc-title">FYC</h2>
           </div>
           <SectionCards
@@ -110,7 +106,6 @@ export default function ProgramsPage({
       <section className="staffScrollSection staffScrollSectionAlt" id="mentorship" aria-labelledby="program-mentorship-title">
         <div className="staffSectionInner">
           <div className="programIntro programIntroLeft">
-            <p className="programEyebrow">Guidance</p>
             <h2 id="program-mentorship-title">Mentorship</h2>
           </div>
           <div className="programCard">
@@ -126,7 +121,6 @@ export default function ProgramsPage({
       <section className="staffScrollSection" id="rcc" aria-labelledby="program-rcc-title">
         <div className="staffSectionInner">
           <div className="programIntro programIntroLeft">
-            <p className="programEyebrow">FPGA Initiative</p>
             <h2 id="program-rcc-title">RCC</h2>
           </div>
           <div className="programCard">

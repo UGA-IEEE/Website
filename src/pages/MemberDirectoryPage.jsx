@@ -1,7 +1,6 @@
 import LinkedinIcon from "../components/LinkedinIcon";
 
 export default function MemberDirectoryPage({
-  eyebrow,
   title,
   members,
   showRoles = true,

@@ -3,6 +3,7 @@ import instagramLogo from "../assets_optimized/branding/Instagram_icon.png";
 import linkedinLogo from "../assets_optimized/branding/linkedinLogo.png";
 
 const navigationLinks = [
+  { href: "#/alumni", label: "Alumni", route: "/alumni" },
   { href: "#/contact", label: "Contact", route: "/contact" },
 ];
 
@@ -20,12 +21,15 @@ const galleryLinks = [
 
 const staffLinks = [
   { href: "#/staff?section=exec-board", label: "Executive Board" },
-  { href: "#/staff?section=technical-teams", label: "Technical Teams" },
+  { href: "#/staff?section=technical-teams", label: "Technical Leads" },
   { href: "#/staff?section=fyc", label: "First-Year Council" },
-  { href: "#/staff?section=mentors-mentees", label: "Mentors & Mentees" },
+  { href: "#/staff?section=mm", label: "MicroMouse" },
+  { href: "#/staff?section=custom-computing", label: "Custom Computing" },
+  { href: "#/staff?section=peer-assistants", label: "Peer Assistants" },
+  { href: "#/staff?section=mentors-mentees", label: "Mentees" },
 ];
 
-const staffRoutes = ["/staff", "/exec-board", "/technical-teams", "/fyc", "/mentors-mentees"];
+const staffRoutes = ["/staff", "/exec-board", "/technical-teams", "/fyc", "/mm", "/custom-computing", "/peer-assistants", "/mentors-mentees"];
 
 const programLinks = [
   { href: "#/programs?section=events", label: "Events" },

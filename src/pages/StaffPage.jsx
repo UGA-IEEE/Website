@@ -1,25 +1,35 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import LinkedinIcon from "../components/LinkedinIcon";
 
-function MemberGrid({ members, showRoles = true, centerLastRowOfThree = false }) {
+function MemberGrid({
+  members = [],
+  showRoles = true,
+  centerLastRowOfThree = false,
+  centerLastRowOfTwo = false,
+  hidePortraits = false,
+}) {
   return (
     <div
       className={`execBoardGrid${
         centerLastRowOfThree ? " execBoardGridCenterLastRowOfThree" : ""
+      }${
+        centerLastRowOfTwo ? " execBoardGridCenterLastRowOfTwo" : ""
       }`}
     >
       {members.map((member) => (
         <article key={member.name} className="memberCard">
-          <div className="memberPortrait">
-            <img
-              src={member.image}
-              alt={member.name}
-              className="memberImage"
-              loading="lazy"
-              decoding="async"
-              sizes="(max-width: 640px) 90vw, (max-width: 900px) 45vw, 25vw"
-            />
-          </div>
+          {!hidePortraits ? (
+            <div className="memberPortrait">
+              <img
+                src={member.image}
+                alt={member.name}
+                className="memberImage"
+                loading="lazy"
+                decoding="async"
+                sizes="(max-width: 640px) 90vw, (max-width: 900px) 45vw, 25vw"
+              />
+            </div>
+          ) : null}
 
           <div className="memberHeading">
             <h3>{member.name}</h3>
@@ -41,14 +51,32 @@ function MemberGrid({ members, showRoles = true, centerLastRowOfThree = false })
   );
 }
 
+function ComingSoonCard({ label }) {
+  return (
+    <div className="programCard">
+      <h3>Coming soon</h3>
+      <p>We&apos;re building out the {label} section and will share more details here soon.</p>
+    </div>
+  );
+}
+
+function UnavailableYearCard({ label }) {
+  return (
+    <div className="programCard">
+      <h3>Not available that year</h3>
+      <p>The {label} role was not available during the &apos;25 - &apos;26 year.</p>
+    </div>
+  );
+}
+
 export default function StaffPage({
-  eyebrow,
-  title,
   execMembers,
   fycMembers,
-  technicalTeamSections,
-  mentorMenteeSections,
+  microMouseMembers,
+  technicalLeads,
 }) {
+  const [selectedYear, setSelectedYear] = useState("25-26");
+
   useEffect(() => {
     const scrollToStaffSection = () => {
       const hashValue = window.location.hash.replace(/^#/, "");
@@ -83,11 +111,38 @@ export default function StaffPage({
         aria-labelledby="staff-exec-title"
       >
         <div className="staffSectionInner">
+          <div className="staffYearToggle" role="tablist" aria-label="Staff years">
+            <button
+              type="button"
+              role="tab"
+              aria-selected={selectedYear === "25-26"}
+              className={`staffYearButton ${
+                selectedYear === "25-26" ? "isActive" : ""
+              }`}
+              onClick={() => setSelectedYear("25-26")}
+            >
+              &apos;25 - &apos;26
+            </button>
+            <button
+              type="button"
+              role="tab"
+              aria-selected={selectedYear === "26-27"}
+              className={`staffYearButton ${
+                selectedYear === "26-27" ? "isActive" : ""
+              }`}
+              onClick={() => setSelectedYear("26-27")}
+            >
+              &apos;26 - &apos;27
+            </button>
+          </div>
           <div className="programIntro programIntroLeft">
-            <p className="programEyebrow">Leadership</p>
             <h2 id="staff-exec-title">Executive Board</h2>
           </div>
-          <MemberGrid members={execMembers} />
+          {selectedYear === "25-26" ? (
+            <MemberGrid members={execMembers} />
+          ) : (
+            <ComingSoonCard label="Executive Board" />
+          )}
         </div>
       </section>
 
@@ -98,16 +153,13 @@ export default function StaffPage({
       >
         <div className="staffSectionInner">
           <div className="programIntro programIntroLeft">
-            <p className="programEyebrow">Technical</p>
             <h2 id="staff-technical-title">Technical Leads</h2>
           </div>
-          <div className="programCard">
-            <h3>Coming soon</h3>
-            <p>
-              We&apos;re building out the Technical Leads section and will share more
-              details here soon.
-            </p>
-          </div>
+          {selectedYear === "25-26" ? (
+            <MemberGrid members={technicalLeads} centerLastRowOfThree />
+          ) : (
+            <ComingSoonCard label="Technical Leads" />
+          )}
         </div>
       </section>
 
@@ -118,13 +170,68 @@ export default function StaffPage({
       >
         <div className="staffSectionInner">
           <div className="programIntro programIntroLeft">
-            <p className="programEyebrow">FYC</p>
             <h2 id="staff-fyc-title">First-Year Council</h2>
           </div>
-          <MemberGrid
-            members={fycMembers}
-            centerLastRowOfThree
-          />
+          {selectedYear === "25-26" ? (
+            <MemberGrid members={fycMembers} centerLastRowOfThree />
+          ) : (
+            <ComingSoonCard label="First-Year Council" />
+          )}
+        </div>
+      </section>
+
+      <section
+        className="staffScrollSection"
+        id="mm"
+        aria-labelledby="staff-mm-title"
+      >
+        <div className="staffSectionInner">
+          <div className="programIntro programIntroLeft">
+            <h2 id="staff-mm-title">MicroMouse</h2>
+          </div>
+          {selectedYear === "25-26" ? (
+            <MemberGrid
+              members={microMouseMembers}
+              centerLastRowOfTwo
+              hidePortraits
+            />
+          ) : (
+            <ComingSoonCard label="MicroMouse" />
+          )}
+        </div>
+      </section>
+
+      <section
+        className="staffScrollSection staffScrollSectionAlt"
+        id="custom-computing"
+        aria-labelledby="staff-custom-computing-title"
+      >
+        <div className="staffSectionInner">
+          <div className="programIntro programIntroLeft">
+            <h2 id="staff-custom-computing-title">Custom Computing</h2>
+          </div>
+          {selectedYear === "25-26" ? (
+            <UnavailableYearCard label="Custom Computing" />
+          ) : (
+            <ComingSoonCard label="Custom Computing" />
+          )}
+        </div>
+      </section>
+
+      <section
+        className="staffScrollSection"
+        id="peer-assistants"
+        aria-labelledby="staff-peer-assistants-title"
+      >
+        <div className="staffSectionInner">
+          <div className="programIntro programIntroLeft">
+            <h2 id="staff-peer-assistants-title">Peer Assistants</h2>
+          </div>
+          {selectedYear === "25-26" ? (
+            <UnavailableYearCard label="Peer Assistants" />
+          ) : (
+            <ComingSoonCard label="Peer Assistants" />
+          )}
         </div>
       </section>
 
@@ -135,16 +242,13 @@ export default function StaffPage({
       >
         <div className="staffSectionInner">
           <div className="programIntro programIntroLeft">
-            <p className="programEyebrow">Support Network</p>
-            <h2 id="staff-mentor-title">Mentors & Mentees</h2>
+            <h2 id="staff-mentor-title">Mentees</h2>
           </div>
-          <div className="programCard">
-            <h3>Coming soon</h3>
-            <p>
-              We&apos;re building out the Mentors &amp; Mentees section and will share
-              more details here soon.
-            </p>
-          </div>
+          {selectedYear === "25-26" ? (
+            <UnavailableYearCard label="Mentees" />
+          ) : (
+            <ComingSoonCard label="Mentees" />
+          )}
         </div>
       </section>
     </main>

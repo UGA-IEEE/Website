@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import "./styles.css";
+import AlumniPage from "./pages/AlumniPage";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import ContactPage from "./pages/ContactPage";
@@ -10,17 +11,20 @@ import ProgramsPage from "./pages/ProgramsPage";
 import SpotlightPage from "./pages/SpotlightPage";
 import StaffPage from "./pages/StaffPage";
 import {
+  alumniMembers,
+  alumniYearOptions,
   execBoardMembers,
   fycMembers,
   gallery2526Sections,
   mentorMenteeSections,
+  microMouseMembers,
   micromouseGalleryImages,
   programEventSections,
   programFycSections,
   programMicromouseSections,
   programMentorshipSections,
   programRccSections,
-  technicalTeamSections,
+  technicalLeads,
 } from "./data/siteContent";
 
 const DEFAULT_ROUTE = "/";
@@ -48,7 +52,8 @@ function renderRoute(route) {
           title="Staff"
           execMembers={execBoardMembers}
           fycMembers={fycMembers}
-          technicalTeamSections={technicalTeamSections}
+          microMouseMembers={microMouseMembers}
+          technicalLeads={technicalLeads}
           mentorMenteeSections={mentorMenteeSections}
         />
       );
@@ -106,6 +111,14 @@ function renderRoute(route) {
         mentorshipSections={programMentorshipSections}
         rccSections={programRccSections}
       />;
+    case "/alumni":
+      return (
+        <AlumniPage
+          title="Our Alumni"
+          yearOptions={alumniYearOptions}
+          members={alumniMembers}
+        />
+      );
     case "/contact":
       return <ContactPage />;
     case "/gallery-25-26":

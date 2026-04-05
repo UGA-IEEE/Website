@@ -248,7 +248,7 @@ export default function HomePage() {
               connect and talk through event partnerships, recruiting engagement,
               or program support.
             </p>
-            <a className="supportAction" href="#/contact">
+            <a className="supportAction" href="#/contact?topic=sponsorships">
               Contact Us About Sponsorships
             </a>
             <div className="sponsorThanks" aria-labelledby="current-sponsors-title">
@@ -305,7 +305,8 @@ export default function HomePage() {
               1. Go to: <a href="https://give.uga.edu" target="_blank" rel="noopener noreferrer"><u>give.uga.edu</u></a> and click "Give Now" in top right corner<br />
               2. Select "College of Engineering" for the college<br />
               3. Select "Engineering Enhancement Fund" as the designation.<br />
-              4. Under Special Instructions/Comments, specify <b>"Donation For IEEE."</b>
+              4. Select "Add Gift."<br />
+              5. Under Special Instructions/Comments, specify <b>"Donation For IEEE."</b>
             </p>
           </div>
           <div className="supportCard">

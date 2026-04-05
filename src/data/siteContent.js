@@ -136,10 +136,79 @@ export const execBoardMembers = [
   },
 ];
 
+export const technicalLeads = [
+  {
+    name: "Jordan Howard",
+    role: "Embedded Lead",
+    image: getExecPhoto("Portrait Jordan.jpg"),
+    linkedin: "https://www.linkedin.com/in/jordan-howard-7ab25616b/",
+  },
+  {
+    name: "Neel Desai",
+    role: "Electrical Lead",
+    image: getExecPhoto("Landscape Neel.jpg"),
+    linkedin: "https://www.linkedin.com/in/neel-desai-09a20a21a/",
+  },
+  {
+    name: "Allen Rucker",
+    role: "Mechanical Lead",
+    image: getExecPhoto("Landscape Allen.jpg"),
+    linkedin: "https://www.linkedin.com/in/allen-rucker-a41433248/",
+  },
+];
+
+export const alumniYearOptions = [
+  { value: "all", label: "Everyone" },
+  { value: "2026", label: "2026" },
+];
+
+export const alumniMembers = [
+  {
+    name: "Jordan Howard",
+    year: "2026",
+    image: getExecPhoto("Portrait Jordan.jpg"),
+    currentRole: "Hardware Engineer @ Amazon Leo",
+    ieeeRole: "President",
+    linkedin: "https://www.linkedin.com/in/jordan-howard-7ab25616b/",
+  },
+  {
+    name: "Neel Desai",
+    year: "2026",
+    image: getExecPhoto("Landscape Neel.jpg"),
+    currentRole: "MS Student @ Carnegie Mellon",
+    ieeeRole: "Vice President",
+    linkedin: "https://www.linkedin.com/in/neel-desai-09a20a21a/",
+  },
+  {
+    name: "Omar Naqib",
+    year: "2026",
+    image: getExecPhoto("Landscape Omar.jpg"),
+    currentRole: "Hardware Engineer @ Nordson",
+    ieeeRole: "Engineering Director",
+    linkedin: "https://www.linkedin.com/in/omarnaqib/",
+  },
+  {
+    name: "Allen Rucker",
+    year: "2026",
+    image: getExecPhoto("Landscape Allen.jpg"),
+    currentRole: "Hardware Engineer @ Dell Technologies",
+    ieeeRole: "Outreach Director",
+    linkedin: "https://www.linkedin.com/in/allen-rucker-a41433248/",
+  },
+  {
+    name: "Joshua Young",
+    year: "2026",
+    image: "",
+    currentRole: "N/A",
+    ieeeRole: "MicroMouse",
+    linkedin: "https://www.linkedin.com/in/josh-young-496355266/",
+  },
+];
+
 export const fycMembers = [
   {
     name: "Zeeshan Ali",
-    role: "Computer Systems Engineering",
+    role: "Computer Engineering",
     image: fycZeeshanPhoto,
     linkedin: "https://www.linkedin.com/in/zeeshan-ali-929101261/",
   },
@@ -151,7 +220,7 @@ export const fycMembers = [
   },
   {
     name: "Saud Kasumbi",
-    role: "Computer Systems Engineering",
+    role: "Computer Engineering",
     image: fycSaudPhoto,
     linkedin: "https://www.linkedin.com/in/saud-kasumbi/",
   },
@@ -163,13 +232,13 @@ export const fycMembers = [
   },
   {
     name: "Udaya Maddi",
-    role: "Computer Systems Engineering",
+    role: "Computer Engineering",
     image: fycUdayaPhoto,
     linkedin: "https://www.linkedin.com/in/udaya-maddi/",
   },
   {
     name: "Hieu Nguyen",
-    role: "Computer Systems Engineering",
+    role: "Computer Engineering",
     image: fycHieuPhoto,
     linkedin: "https://www.linkedin.com/in/hieu-winn/",
   },
@@ -187,48 +256,54 @@ export const fycMembers = [
   },
   {
     name: "Praneel Surath",
-    role: "Computer Systems Engineering",
+    role: "Computer Engineering",
     image: fycPraneelPhoto,
     linkedin: "https://www.linkedin.com/in/praneel-s/",
   },
   {
     name: "Coco Tang",
-    role: "Computer Systems Engineering",
+    role: "Computer Engineering",
     image: fycCocoPhoto,
     linkedin: "https://www.linkedin.com/in/coco-tang1/",
   },
   {
     name: "Jerry Wang",
-    role: "Computer Systems Engineering",
+    role: "Computer Engineering",
     image: fycJerryPhoto,
     linkedin: "https://www.linkedin.com/in/jerry-wang07/",
   },
 ];
 
-export const staffSections = [
+export const microMouseMembers = [
   {
-    title: "Executive Board",
-    description:
-      "Meet the student leaders coordinating chapter operations, outreach, events, and strategy.",
-    href: "#/exec-board",
+    name: "Jacob Bennett",
+    role: "Electrical Team",
+    linkedin: "https://www.linkedin.com/in/jacob-bennett-ee/",
   },
   {
-    title: "Technical Teams",
-    description:
-      "Explore the project groups building skills through hands-on design, collaboration, and competition prep.",
-    href: "#/technical-teams",
+    name: "Gregory Egan",
+    role: "Electrical Team",
+    linkedin: "https://www.linkedin.com/in/gregory-egan-227897289/",
   },
   {
-    title: "First-Year Council",
-    description:
-      "Connect with first-year members helping shape community and involvement across the chapter.",
-    href: "#/fyc",
+    name: "Ese Thaddeus",
+    role: "Embedded Team",
+    linkedin: "https://www.linkedin.com/in/esethad/",
   },
   {
-    title: "Mentors & Mentees",
-    description:
-      "Learn how our mentorship community supports academic growth, career exploration, and peer connection.",
-    href: "#/mentors-mentees",
+    name: "Sahil Shaik",
+    role: "Embedded Team",
+    linkedin: "https://www.linkedin.com/in/sahil-shaik07/",
+  },
+  {
+    name: "Teo Brown",
+    role: "Mechanical Team",
+    linkedin: "https://www.linkedin.com/in/teo-brown/",
+  },
+  {
+    name: "Joshua Young",
+    role: "Mechanical Team",
+    linkedin: "https://www.linkedin.com/in/josh-young-496355266/",
   },
 ];
 

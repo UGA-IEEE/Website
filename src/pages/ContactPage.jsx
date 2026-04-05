@@ -1,8 +1,18 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { contactTopics } from "../data/siteContent";
 
 export default function ContactPage() {
   const [selectedTopic, setSelectedTopic] = useState("");
+
+  useEffect(() => {
+    const hashValue = window.location.hash.replace(/^#/, "");
+    const [, queryString = ""] = hashValue.split("?");
+    const topicValue = new URLSearchParams(queryString).get("topic");
+
+    if (contactTopics.some((topic) => topic.value === topicValue)) {
+      setSelectedTopic(topicValue);
+    }
+  }, []);
 
   const handleSubmit = (event) => {
     event.preventDefault();

@@ -63,8 +63,7 @@ function ComingSoonCard({ label }) {
 function UnavailableYearCard({ label }) {
   return (
     <div className="programCard">
-      <h3>Not available that year</h3>
-      <p>The {label} role was not available during the &apos;25 - &apos;26 year.</p>
+      <p>The {label} role was not available during this year.</p>
     </div>
   );
 }

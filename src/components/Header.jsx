@@ -1,0 +1,247 @@
+import { useEffect, useState } from "react";
+
+const navigationLinks = [
+  { href: "#/alumni", label: "Alumni", route: "/alumni" },
+  { href: "#/contact", label: "Contact", route: "/contact" },
+];
+
+const homeSectionLinks = [
+  { href: "#/?section=about-us", label: "About Us" },
+  { href: "#/?section=events", label: "Calendar" },
+  { href: "#/?section=join-us", label: "How To Join" },
+  { href: "#/?section=sponsorships", label: "Sponsorships" },
+  { href: "#/?section=donations", label: "Donations" },
+];
+
+const galleryLinks = [
+  { href: "#/gallery-25-26", label: "25' - 26'" },
+];
+
+const staffLinks = [
+  { href: "#/staff?section=exec-board", label: "Executive Board" },
+  { href: "#/staff?section=technical-teams", label: "Technical Leads" },
+  { href: "#/staff?section=fyc", label: "First-Year Council" },
+  { href: "#/staff?section=mm", label: "MicroMouse" },
+  { href: "#/staff?section=custom-computing", label: "Custom Computing" },
+  { href: "#/staff?section=peer-assistants", label: "Peer Assistants" },
+  { href: "#/staff?section=mentors-mentees", label: "Mentees" },
+];
+
+const staffRoutes = ["/staff", "/exec-board", "/technical-teams", "/fyc", "/mm", "/custom-computing", "/peer-assistants", "/mentors-mentees"];
+
+const programLinks = [
+  { href: "#/programs?section=events", label: "Events" },
+  { href: "#/programs?section=micromouse", label: "MicroMouse" },
+  { href: "#/programs?section=fyc-programs", label: "FYC" },
+  { href: "#/programs?section=mentorship", label: "Mentorship" },
+  { href: "#/programs?section=rcc", label: "RCC" },
+];
+
+const programRoutes = ["/programs", "/micromouse"];
+
+const socialLinks = [
+  {
+    href: "https://instagram.com/uga.ieee",
+    label: "Instagram",
+    icon: "https://ik.imagekit.io/f9q7dtbaq/assets_optimized/branding/Instagram_icon.png",
+  },
+  {
+    href: "https://www.linkedin.com/company/uga-ieee/",
+    label: "LinkedIn",
+    icon: "https://ik.imagekit.io/f9q7dtbaq/assets_optimized/branding/linkedinLogo.png",
+  },
+];
+
+export default function Header({ route }) {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  useEffect(() => {
+    setIsMobileMenuOpen(false);
+  }, [route]);
+
+  const closeDropdownFocus = (event) => {
+    event.currentTarget.blur();
+  };
+
+  const navigateTo = (href) => {
+    window.location.hash = href.replace(/^#/, "");
+    setIsMobileMenuOpen(false);
+  };
+
+  const handleNavLinkClick = () => {
+    setIsMobileMenuOpen(false);
+  };
+
+  return (
+    <header className="topbar">
+      <div className="topbarRow">
+        <a href="#/" className="brand" aria-label="UGA IEEE Home">
+          <img
+            src="https://ik.imagekit.io/f9q7dtbaq/assets_optimized/branding/UGAIEEE_Rectangular_BR.png"
+            alt="UGA IEEE"
+            className="brandLogo"
+            loading="eager"
+            fetchPriority="high"
+            decoding="async"
+          />
+        </a>
+
+        <button
+          type="button"
+          className={`mobileMenuToggle${isMobileMenuOpen ? " isOpen" : ""}`}
+          aria-label={isMobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+          aria-expanded={isMobileMenuOpen}
+          aria-controls="site-navigation"
+          onClick={() => setIsMobileMenuOpen((isOpen) => !isOpen)}
+        >
+          <span />
+          <span />
+          <span />
+        </button>
+      </div>
+
+      <nav
+        id="site-navigation"
+        className={`topLinks${isMobileMenuOpen ? " isOpen" : ""}`}
+      >
+        <div className="navDropdown">
+          <button
+            type="button"
+            className="navDropdownToggle"
+            aria-haspopup="true"
+            aria-current={route === "/" ? "page" : undefined}
+            onClick={() => navigateTo("#/")}
+            onMouseUp={closeDropdownFocus}
+          >
+            Home
+          </button>
+          <div className="navDropdownMenu" aria-label="Home sections">
+            {homeSectionLinks.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                onClick={(event) => {
+                  closeDropdownFocus(event);
+                  handleNavLinkClick();
+                }}
+              >
+                {link.label}
+              </a>
+            ))}
+          </div>
+        </div>
+
+        <div className="navDropdown">
+          <button
+            type="button"
+            className="navDropdownToggle"
+            aria-haspopup="true"
+            aria-current={staffRoutes.includes(route) ? "page" : undefined}
+            onClick={() => navigateTo("#/staff")}
+            onMouseUp={closeDropdownFocus}
+          >
+            Staff
+          </button>
+          <div className="navDropdownMenu" aria-label="Staff pages">
+            {staffLinks.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                onClick={(event) => {
+                  closeDropdownFocus(event);
+                  handleNavLinkClick();
+                }}
+              >
+                {link.label}
+              </a>
+            ))}
+          </div>
+        </div>
+
+        <div className="navDropdown">
+          <button
+            type="button"
+            className="navDropdownToggle"
+            aria-haspopup="true"
+            aria-current={programRoutes.includes(route) ? "page" : undefined}
+            onClick={() => navigateTo("#/programs")}
+            onMouseUp={closeDropdownFocus}
+          >
+            Programs
+          </button>
+          <div className="navDropdownMenu" aria-label="Programs pages">
+            {programLinks.map((link) => (
+              <a
+                key={`${link.label}-${link.href}`}
+                href={link.href}
+                onClick={(event) => {
+                  closeDropdownFocus(event);
+                  handleNavLinkClick();
+                }}
+              >
+                {link.label}
+              </a>
+            ))}
+          </div>
+        </div>
+
+        {navigationLinks.map((link) => (
+          <a
+            key={link.route}
+            href={link.href}
+            aria-current={route === link.route ? "page" : undefined}
+            onClick={handleNavLinkClick}
+          >
+            {link.label}
+          </a>
+        ))}
+
+        <div className="navDropdown">
+          <button
+            type="button"
+            className="navDropdownToggle"
+            aria-haspopup="true"
+            onClick={() => navigateTo("#/gallery-25-26")}
+            onMouseUp={closeDropdownFocus}
+          >
+            Gallery
+          </button>
+          <div className="navDropdownMenu" aria-label="Gallery years">
+            {galleryLinks.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                onClick={(event) => {
+                  closeDropdownFocus(event);
+                  handleNavLinkClick();
+                }}
+              >
+                {link.label}
+              </a>
+            ))}
+          </div>
+        </div>
+
+        {socialLinks.map((link) => (
+          <a
+            key={link.label}
+            href={link.href}
+            target="_blank"
+            rel="noreferrer"
+            aria-label={link.label}
+            className="socialBtn"
+            onClick={handleNavLinkClick}
+          >
+            <img
+              src={link.icon}
+              alt={link.label}
+              className="socialIcon"
+              loading="eager"
+              decoding="async"
+            />
+          </a>
+        ))}
+      </nav>
+    </header>
+  );
+}

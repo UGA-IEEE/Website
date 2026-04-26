@@ -1,0 +1,13 @@
+/* Shared layout reset lives here so page styles can focus on sections/components. */
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+}

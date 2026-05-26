@@ -14,7 +14,7 @@ const homeSectionLinks = [
 ];
 
 const galleryLinks = [
-  { href: "#/gallery-25-26", label: "25' - 26'" },
+  { href: "#/gallery-25-26", label: "'25 - '26" },
 ];
 
 const staffLinks = [

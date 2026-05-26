@@ -123,7 +123,7 @@ export default function HomePage() {
               The Institute of Electrical and Electronics Engineers (IEEE) is the world's largest professional association dedicated to advancing technological innovation and excellence for the benefit of humanity.
             </p>
             <p>
-              As a student branch, our goal is to uphold the organization's mission of fostering the knowledge for technological excellence and furthering the professional development of students in the technology field.
+              As a student branch, our goal is to uphold the organization's mission of fostering knowledge for technological excellence and furthering the professional development of students in the technology field.
             </p>
           </div>
         </div>
@@ -219,10 +219,7 @@ export default function HomePage() {
           <div className="joinSectionLayout">
             <div className="homeTextPanel">
               <p>
-                GroupMe is the easiest way to stay in the loop for
-                meetings, workshops, and social events. Start with
-                these links and you&apos;ll be plugged into everything we&apos;re
-               doing this year.
+                We'll update this section with our GroupMe and other important links as the academic year gets closer!
               </p>
             </div>
             <div className="homeLinksList">

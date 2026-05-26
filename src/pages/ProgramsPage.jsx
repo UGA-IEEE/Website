@@ -10,6 +10,13 @@ function SectionCards({ sections, getCardClassName }) {
         >
           <h3>{section.title}</h3>
           <p>{section.description}</p>
+          {section.bullets && (
+            <ul className="programCardBullets">
+              {section.bullets.map((bullet) => (
+                <li key={bullet}>{bullet}</li>
+              ))}
+            </ul>
+          )}
         </article>
       ))}
     </div>
@@ -22,7 +29,6 @@ export default function ProgramsPage({
   micromouseSections,
   micromouseImages,
   fycSections,
-  mentorshipSections,
   rccSections,
 }) {
   useEffect(() => {
@@ -67,7 +73,14 @@ export default function ProgramsPage({
           <div className="programIntro programIntroLeft">
             <h2 id="program-micromouse-title">MicroMouse</h2>
           </div>
-          <SectionCards sections={micromouseSections} />
+          <SectionCards
+            sections={micromouseSections}
+            getCardClassName={(section) =>
+              section.title === "What is MicroMouse?" || section.title === "Application Process"
+                ? "programCard programCardWide"
+                : "programCard"
+            }
+          />
           {micromouseImages.length ? (
             <div className="micromouseGallery programGallery" aria-label="Micromouse images">
               {micromouseImages.map((image) => (
@@ -103,33 +116,19 @@ export default function ProgramsPage({
         </div>
       </section>
 
-      <section className="staffScrollSection staffScrollSectionAlt" id="mentorship" aria-labelledby="program-mentorship-title">
-        <div className="staffSectionInner">
-          <div className="programIntro programIntroLeft">
-            <h2 id="program-mentorship-title">Mentorship</h2>
-          </div>
-          <div className="programCard">
-            <h3>Coming soon</h3>
-            <p>
-              We&apos;re building out the Mentorship section and will share more
-              details here soon.
-            </p>
-          </div>
-        </div>
-      </section>
-
       <section className="staffScrollSection" id="rcc" aria-labelledby="program-rcc-title">
         <div className="staffSectionInner">
           <div className="programIntro programIntroLeft">
             <h2 id="program-rcc-title">RCC</h2>
           </div>
-          <div className="programCard">
-            <h3>Coming soon</h3>
-            <p>
-              We&apos;re building out the RCC section and will share more details
-              here soon.
-            </p>
-          </div>
+          <SectionCards
+            sections={rccSections}
+            getCardClassName={(section) =>
+              section.title === "What is RCC?" || section.title === "Application Process"
+                ? "programCard programCardWide"
+                : "programCard"
+            }
+          />
         </div>
       </section>
     </main>

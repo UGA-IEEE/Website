@@ -20,21 +20,11 @@ function getExecPhoto(fileName) {
 // Centralized content keeps edits predictable for collaborators updating people,
 // links, or event details without having to dig through page components.
 export const importantHomeLinks = [
-  {
-    label: "Pay Dues",
-    href: "https://example.com/pay-dues",
-    description: "Pay membership dues for the year.",
-  },
-  {
-    label: "Pickleball Registration",
-    href: "https://forms.office.com/Pages/ResponsePage.aspx?id=HmwhqGNNUkOMO1D6HxR1sQCIXV0M9JBBrRc322k3PzRUQ1hBM0gzMFhOOFpOWlJLS1VBUUgzMFVLQyQlQCN0PWcu",
-    description: "Sign up for our pickleball tournament!.",
-  },
-  {
+  /**{
     label: "Join the GroupMe",
-    href: "https://groupme.com/join_group/102440624/SQt9qQkr",
+    href: "https://groupme.com/join_group/102440624/3bgTHuCl",
     description: "Get updates, reminders, and community chat.",
-  },
+  },**/
 ];
 
 export const contactTopics = [
@@ -128,16 +118,16 @@ export const execBoardMembers = [
 
 export const technicalLeads = [
   {
-    name: "Jordan Howard",
-    role: "Embedded Lead",
-    image: "https://ik.imagekit.io/f9q7dtbaq/assets_optimized/Exec/Portrait%20Jordan.jpg",
-    linkedin: "https://www.linkedin.com/in/jordan-howard-7ab25616b/",
-  },
-  {
     name: "Neel Desai",
     role: "Electrical Lead",
     image: "https://ik.imagekit.io/f9q7dtbaq/assets_optimized/Exec/Landscape%20Neel.jpg",
     linkedin: "https://www.linkedin.com/in/neel-desai-09a20a21a/",
+  },
+  {
+    name: "Jordan Howard",
+    role: "Embedded Lead",
+    image: "https://ik.imagekit.io/f9q7dtbaq/assets_optimized/Exec/Portrait%20Jordan.jpg",
+    linkedin: "https://www.linkedin.com/in/jordan-howard-7ab25616b/",
   },
   {
     name: "Allen Rucker",
@@ -176,7 +166,7 @@ export const alumniMembers = [
     year: "2026",
     image: "https://ik.imagekit.io/f9q7dtbaq/assets_optimized/Exec/Landscape%20Omar.jpg",
     currentRole: "Hardware Engineer @ Nordson",
-    location: "Duluth, GA",
+    location: "Atlanta, GA",
     ieeeRole: "Engineering Director",
     linkedin: "https://www.linkedin.com/in/omarnaqib/",
   },
@@ -217,7 +207,7 @@ export const fycMembers = [
     linkedin: "https://www.linkedin.com/in/mariajose-magallanes/",
   },
   {
-    name: "Udaya Maddi",
+    name: "Udaya Sashank Maddi",
     role: "Computer Engineering",
     image: "https://ik.imagekit.io/f9q7dtbaq/assets_optimized/FYC/Udaya.jpg",
     linkedin: "https://www.linkedin.com/in/udaya-maddi/",
@@ -247,7 +237,7 @@ export const fycMembers = [
     linkedin: "https://www.linkedin.com/in/praneel-s/",
   },
   {
-    name: "Coco Tang",
+    name: "CoCo Tang",
     role: "Computer Engineering",
     image: "https://ik.imagekit.io/f9q7dtbaq/assets_optimized/FYC/Coco.jpg",
     linkedin: "https://www.linkedin.com/in/coco-tang1/",
@@ -354,14 +344,34 @@ export const programEventSections = [
 
 export const programMicromouseSections = [
   {
-    title: "Background",
+    title: "What is MicroMouse?",
     description:
-      "MicroMouse is an international competition hosted at the IEEE Applied Power Electronics Conference.",
+      "MicroMouse is an annual technical competition project held at the Applied Power Electronics Conference (APEC). Teams design, build, and test an autonomous robot roughly the size of a mouse to solve and traverse a 2880 × 2880 mm (9.4 × 9.4 ft) maze in the shortest time possible. The project challenges students to develop a small-form-factor, precision-focused embedded system that detects, adapts to, and avoids obstacles at high speeds.",
   },
   {
-    title: "Goal",
+    title: "Competition Team",
     description:
-      "    Build an autonomous robot within an 80x160 mm (3x6 in) frame to solve and navigate an unknown 2880x2880 mm (9.5x9.5 ft) maze in under 20 seconds.",
+      "Students selected to represent the chapter at the conference and compete with the final robot based on their technical experience and ability to make direct contributions to the project.",
+  },
+  {
+    title: "Research & Development (R&D) Team",
+    description:
+      "Students selected to develop foundational skills in the core concepts of the project while exploring new ideas, prototypes, and improvements that could support future versions of the robot.",
+  },
+  {
+    title: "Electrical Division",
+    description:
+      "Oversees the robot’s schematic design and PCB layout in Altium Designer while contributing to the selection, testing, and analysis of electrical components to ensure safety, reliability, and performance improvements.",
+  },
+  {
+    title: "Embedded Division",
+    description:
+      "Leads the firmware development and integration for STM32 microcontrollers using C++ in a VS Code environment, with a focus on communication protocols, data acquisition, and maze-solving algorithms.",
+  },
+  {
+    title: "Application Process",
+    description:
+      "Applications open at the beginning of each Fall semester. Members are placed on one of two teams and one of two divisions. Prospective students submit a resume and their preferred division, then complete a 30-minute virtual technical interview. Team selection is based on experience, interest, and availability. Division preferences are considered during placement, but assignments may vary depending on project needs and applicant qualifications. Applicants will be notified by email regarding whether they have been selected and, if selected, their assigned team and division.",
   },
 ];
 
@@ -408,14 +418,43 @@ export const programMentorshipSections = [
 
 export const programRccSections = [
   {
-    title: "Regional Collaboration",
+    title: "What is RCC?",
     description:
-      "RCC creates space for students to engage with the broader IEEE community through collaborative programming, shared ideas, and opportunities that connect chapters beyond campus.",
+      "The Reconfigurable Computing Challenge (RCC) is an annual technical competition project held at the International Symposium on Field-Programmable Custom Computing Machines (FCCM). Teams design and demonstrate innovative, self-defined projects using FPGA, AI Engine (AIE), or Neural Processing Unit (NPU) architectures. Submissions consist of a two-page project description and a ten-minute demonstration video showing the design running on hardware. Finalists present at the FCCM conference.",
   },
   {
-    title: "Professional Exposure",
+    title: "Competition Team",
     description:
-      "Through RCC-related opportunities, members can build their network, explore leadership pathways, and gain perspective on how IEEE connects students with the wider profession.",
+      "Students selected to represent the chapter at the conference are tasked with developing, implementing, and submitting a final design to demonstrate novel applications of hardware acceleration.",
+  },
+  {
+    title: "Research & Development (R&D) Team",
+    description:
+      "Students selected to learn concepts in reconfigurable computing through educational lectures and smaller-scale projects that provide opportunities to gain and apply technical skills in a controlled environment.",
+  },
+  {
+    title: "Scope",
+    description: "Projects may explore any application domain if they run on an eligible architecture. Topics include, but are not limited to:",
+    bullets: [
+      "Small-scale LLM deployment",
+      "Accelerators for scientific applications",
+      "Sparse matrix multiplication (SpMM)",
+    ],
+  },
+  {
+    title: "Timeline",
+    description:
+      "Students will typically spend one to two years learning the material before transitioning into project development, testing, and analysis.",
+    bullets: [
+      "1st/2nd Year: Exploration of FPGAs, AIEs, NPUs",
+      "3rd Year: Project Research & Development",
+      "4th Year: Project Testing & Analysis",
+    ],
+  },
+  {
+    title: "Application Process",
+    description:
+      "Applications open at the beginning of each Spring semester. Members are placed on one of two teams. Prospective students submit a resume, then complete a 30-minute virtual technical interview. Applicants are not expected to have prior experience with FPGAs, AIEs, or NPUs, but should demonstrate a strong interest in learning reconfigurable computing concepts and contributing to long-term project development. Students will be notified by email regarding whether they have been selected and, if selected, their assigned team.",
   },
 ];
 

@@ -217,39 +217,6 @@ export default function StaffPage({
         </div>
       </section>
 
-      <section
-        className="staffScrollSection"
-        id="peer-assistants"
-        aria-labelledby="staff-peer-assistants-title"
-      >
-        <div className="staffSectionInner">
-          <div className="programIntro programIntroLeft">
-            <h2 id="staff-peer-assistants-title">Peer Assistants</h2>
-          </div>
-          {selectedYear === "25-26" ? (
-            <UnavailableYearCard label="Peer Assistants" />
-          ) : (
-            <ComingSoonCard label="Peer Assistants" />
-          )}
-        </div>
-      </section>
-
-      <section
-        className="staffScrollSection staffScrollSectionAlt"
-        id="mentors-mentees"
-        aria-labelledby="staff-mentor-title"
-      >
-        <div className="staffSectionInner">
-          <div className="programIntro programIntroLeft">
-            <h2 id="staff-mentor-title">Mentees</h2>
-          </div>
-          {selectedYear === "25-26" ? (
-            <UnavailableYearCard label="Mentees" />
-          ) : (
-            <ComingSoonCard label="Mentees" />
-          )}
-        </div>
-      </section>
     </main>
   );
 }

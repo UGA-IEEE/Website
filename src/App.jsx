@@ -70,7 +70,7 @@ function renderRoute(route) {
     case "/fyc":
       return (
         <MemberDirectoryPage
-          eyebrow="25' - 26'"
+          eyebrow="'25 - '26"
           title="Meet Our First-Year Council"
           members={fycMembers}
           showRoles={false}
@@ -123,7 +123,7 @@ function renderRoute(route) {
     case "/gallery-25-26":
       return (
         <GalleryPage
-          eyebrow="25' - 26'"
+          eyebrow="'25 - '26"
           title="UGA IEEE Gallery"
           images={gallery2526Sections}
           emptyText=""

@@ -459,14 +459,6 @@ export const programRccSections = [
 ];
 
 export const micromouseGalleryImages = [
-  {
-    src: "https://ik.imagekit.io/f9q7dtbaq/assets_optimized/MicroMouse/Byte.jpg",
-    alt: "MicroMouse robot Byte",
-  },
-  {
-    src: "https://ik.imagekit.io/f9q7dtbaq/assets_optimized/MicroMouse/unpainted_maze.jpg",
-    alt: "MicroMouse competition maze",
-  },
 ];
 
 export const gallery2526Sections = [

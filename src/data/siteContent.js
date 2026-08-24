@@ -35,7 +35,7 @@ export const importantHomeLinks = [
   {
   label: "Apply to First Year Council",
   href: "https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=HmwhqGNNUkOMO1D6HxR1sQCIXV0M9JBBrRc322k3PzRUNVo2NTNUQ0taWkxVVUhLSE1QVVZOTFdESyQlQCN0PWcu",
-  description: "First-years and transfers with fewer than 40 credit hours are elligble to apply",
+  description: "First-years and transfers with fewer than 40 credit hours are eligible to apply",
   },
 ];
 

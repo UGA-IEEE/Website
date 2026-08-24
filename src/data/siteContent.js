@@ -20,11 +20,23 @@ function getExecPhoto(fileName) {
 // Centralized content keeps edits predictable for collaborators updating people,
 // links, or event details without having to dig through page components.
 export const importantHomeLinks = [
-  /**{
+  {
     label: "Join the GroupMe",
     href: "https://groupme.com/join_group/102440624/3bgTHuCl",
     description: "Get updates, reminders, and community chat.",
-  },**/
+  },
+  
+  {
+  label: "Apply to MicroMouse",
+  href: "https://forms.cloud.microsoft/r/P0XrAhwetA",
+  description: "Apply to our MicroMouse team for this year!",
+  },
+
+  {
+  label: "Apply to First Year Council",
+  href: "https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=HmwhqGNNUkOMO1D6HxR1sQCIXV0M9JBBrRc322k3PzRUNVo2NTNUQ0taWkxVVUhLSE1QVVZOTFdESyQlQCN0PWcu",
+  description: "First-years and transfers with fewer than 40 credit hours are elligble to apply",
+  },
 ];
 
 export const contactTopics = [
@@ -558,13 +570,9 @@ export const gallery2526Sections = [
 ];
 
 export const calendarEvents = {
-  "2026-04-11": {
-    title: "Pickleball Tournament",
-    image: "https://ik.imagekit.io/f9q7dtbaq/assets_optimized/Calendar/IEEE%20Pickleball%20Tournament.png",
-  },
-  "2026-04-17": {
-    title: "Cox Visit",
-    image: "https://ik.imagekit.io/f9q7dtbaq/assets_optimized/Calendar/Cox%20Automotive.png",
+  "2026-08-27": {
+    title: "Kickoff Event",
+    image: "https://ik.imagekit.io/f9q7dtbaq/assets_optimized/Calendar/IEEE%20Kickoff%20Meeting.png",
   },
 };
 

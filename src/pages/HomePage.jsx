@@ -217,11 +217,7 @@ export default function HomePage() {
             <h2 id="join-us-title">How To Join Us</h2>
           </div>
           <div className="joinSectionLayout">
-            <div className="homeTextPanel">
-              <p>
-                We'll update this section with our GroupMe and other important links as the academic year gets closer!
-              </p>
-            </div>
+            
             <div className="homeLinksList">
               {importantHomeLinks.map((link) => (
                 <a

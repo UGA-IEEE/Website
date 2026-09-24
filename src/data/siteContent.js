@@ -25,17 +25,11 @@ export const importantHomeLinks = [
     href: "https://groupme.com/join_group/102440624/3bgTHuCl",
     description: "Get updates, reminders, and community chat.",
   },
-  
-  {
-  label: "Apply to MicroMouse",
-  href: "https://forms.cloud.microsoft/r/P0XrAhwetA",
-  description: "Apply to our MicroMouse team for this year!",
-  },
 
   {
-  label: "Apply to First Year Council",
-  href: "https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=HmwhqGNNUkOMO1D6HxR1sQCIXV0M9JBBrRc322k3PzRUNVo2NTNUQ0taWkxVVUhLSE1QVVZOTFdESyQlQCN0PWcu",
-  description: "First-years and transfers with fewer than 40 credit hours are eligible to apply",
+  label: "Resume Template",
+  href: "https://outlookuga-my.sharepoint.com/:u:/g/personal/sej83988_uga_edu/IQBBiBKWBNeAT4HJqQPNqQSEAUaBQ10ZMGHtne9QMH2UCRA?e=eHgcAR",
+  description: "This is the resume template for our resume workshop.",
   },
 ];
 

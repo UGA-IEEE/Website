@@ -214,7 +214,7 @@ export default function HomePage() {
         <div className="homeSectionInner">
           <div className="homeSectionIntro">
             <p className="homeSectionEyebrow">Get Involved</p>
-            <h2 id="join-us-title">How To Join Us</h2>
+            <h2 id="join-us-title">Important Links</h2>
           </div>
           <div className="joinSectionLayout">
             
